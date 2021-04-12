@@ -5,11 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
-<link rel="stylesheet" href="CSS/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap.css">
 <title>ㅇㅇㅇ의 미니홈피</title>
-<link rel="stylesheet" href="./CSS/1_font_style.css"/>
-    <link rel="stylesheet" href="./CSS/2_layout_style.css"/>
-    <link rel="stylesheet" href="./CSS/3_design_style.css"/>
+<link rel="stylesheet" href="./css/1_font_style.css"/>
+    <link rel="stylesheet" href="./css/2_layout_style.css"/>
+    <link rel="stylesheet" href="./css/3_design_style.css"/>
     <script src="https://kit.fontawesome.com/66ae39e275.js" crossorigin="anonymous"></script>
 </head>
 <body>
