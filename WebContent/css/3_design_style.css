@@ -1,0 +1,103 @@
+@charset "UTF-8";
+/* 홈페이지 배경 (격자 배경) */
+.grid_background {
+    background-color: #a3a3a3;
+    background-image: url("./images/pattern.png");
+    background-size: 100px;
+    
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+/* 북 커버 (하늘색 배경) */
+.bookcover {
+    background-color: #B4BADA;
+    border-radius: 10px;
+    border: 1px solid #6d7085;
+    
+    width: 950px;
+    height: 650px;
+
+    margin: 50px auto;
+    position: relative;
+}
+/* 북 커버 안쪽 도트 (흰색 점선) */
+.bookdot {
+    border: 3px dashed white;
+    border-radius: 10px;
+    padding: 15px;
+
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+}
+/* 북 도트 안쪽 페이지 */
+.page {
+    background-color: #eeeeee;
+    border-radius: 10px;
+
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+}
+
+/* 디자인 클래스 */
+.box_white {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #dadada;
+}
+.box_gray {
+    border: 1px solid #738186;
+}
+.color_red {
+    color: #fa8585;
+}
+.color_blue {
+    color: #9faadf;
+}
+.visit-URL_font_style {
+    font-size: small;
+    padding: 5px;
+    margin-top: 5px;
+}
+.visit-URL_font_style > a {
+    text-decoration: none;
+    color: #9faadf;
+}
+.red_square {
+    background-color: #f0aeae;
+    color: white;
+    text-align: center;
+    border-radius: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.blue_square {
+    background-color: rgb(150, 164, 238);
+    color: white;
+    text-align: center;
+    border-radius: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.text_align_center {
+    text-align: center;
+}
+.blue_font_neo {
+    font-family: 'NeoDunggeunmo';
+    color: #9faadf;
+}
+
+.z_index_10 {
+    z-index: 10;
+}
+.z_index_20 {
+    z-index: 20;
+}
