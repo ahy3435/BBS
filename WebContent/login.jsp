@@ -25,15 +25,10 @@
     <style>
     body{
     margin:0;}
-    @font-face {
-    font-family: 'Wemakeprice-Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Wemakeprice-Bold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+ 
     </style>
 </head>
-<body class="grid_background"></body>
+<body>
 
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
@@ -52,20 +47,17 @@
 				<li><a href="bbs.jsp">게시판</a></li>
 				<li><a href="diary.jsp">일기장</a></li>
 				<li><a href="gallery.jsp">사진첩</a></li>
-			</ul>
-			
-			</ul>
+				</ul>
 		</div>
 	</nav>
-	<div class="login">
 	<div class="col-lg-4"></div>
-	<div class="col-lg-4">
+	<div>
 	
 	
-	<div class="jumbotron
-	" style="padding-top:20px;">
+	<div class="jumbotron"
+	 style="padding-top:20px;">
 	<form method="post" action="loginAction.jsp">
-	<h3 class="font1" style="text-align:center";>Login</h3>
+	<h3 class="font1" style="text-align:center">Login</h3>
 	<div class="form-group">
 	<input type="text" class="form-control" placeholder="Id" name="userID" maxlength="20">
 	</div>
