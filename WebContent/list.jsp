@@ -18,26 +18,28 @@
 			userID = (String)session.getAttribute("userID");
 		}
 	%>
-	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
-		<div class="navbar-header"> 	<!-- 네비게이션 상단 부분 -->
+	<nav class="navbar navbar-default">
+		<!-- 네비게이션 -->
+		<div class="navbar-header">
+			<!-- 네비게이션 상단 부분 -->
 			<!-- 네비게이션 상단 박스 영역 -->
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
 				aria-expanded="false">
 				<!-- 이 삼줄 버튼은 화면이 좁아지면 우측에 나타난다 -->
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
 			</button>
 			<!-- 상단 바에 제목이 나타나고 클릭하면 main 페이지로 이동한다 -->
 			<a class="navbar-brand" href="main.jsp">ㅇㅇㅇ의 미니홈피</a>
 		</div>
 		<!-- 게시판 제목 이름 옆에 나타나는 메뉴 영역 -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-			<!-- active를 메인에서 게시판 쪽으로 옮겨줌. 현재의 페이지 알려줌 -->
-				<li  class="active"><a href="bbs.jsp">게시판</a></li>
+				<!-- active를 메인에서 게시판 쪽으로 옮겨줌. 현재의 페이지 알려줌 -->
+				<li class="active"><a href="bbs.jsp">게시판</a></li>
 			</ul>
 			<%
 				// 로그인 하지 않았을 때 보여지는 화면
@@ -45,16 +47,13 @@
 			%>
 			<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">접속하기<span class="caret"></span></a>
-					<!-- 드랍다운 아이템 영역 -->	
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">접속하기<span class="caret"></span></a> <!-- 드랍다운 아이템 영역 -->
 					<ul class="dropdown-menu">
 						<li><a href="login.jsp">로그인</a></li>
 						<li><a href="join.jsp">회원가입</a></li>
-					</ul>
-				</li>
+					</ul></li>
 			</ul>
 			<%
 				// 로그인이 되어 있는 상태에서 보여주는 화면
@@ -62,57 +61,63 @@
 			%>
 			<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">회원관리<span class="caret"></span></a>
-					<!-- 드랍다운 아이템 영역 -->	
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">회원관리<span class="caret"></span></a> <!-- 드랍다운 아이템 영역 -->
 					<ul class="dropdown-menu">
 						<li><a href="logoutAction.jsp">로그아웃</a></li>
-					</ul>
-				</li>
+					</ul></li>
 			</ul>
 			<%
 				}
 			%>
-    	</div>
-    </nav>      
-   <!-- 게시판 메인 페이지 영역 시작 -->
-	
-		<div class="container">
-		
-	
-		<!-- table-striped : 게시글 목록 홀수/짝수 번갈아 색상변경하여 보기 쉽게 해주는 요소 -->
-			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+		</div>
+	</nav>
+	<!-- 게시판 메인 페이지 영역 시작 -->
+	<div class="container">
+		<div class="row">
+			<!-- table-striped : 게시글 목록 홀수/짝수 번갈아 색상변경하여 보기 쉽게 해주는 요소 -->
+			<table class="table table-striped"
+				style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-					<!-- colspan :2개 열만큼 -->
-						<th colspan="2" style="background-color: #e1e6ff; text-align: center; font-size:15px; font-family: 'Wemakeprice-Bold';">Diary</th>
-
+						<th style="background-color: #e1e6ff; text-align: center; font-size:15px; font-family: 'Wemakeprice-Bold';">번호</th>
+						<th style="background-color: #e1e6ff; text-align: center; font-size:15px; font-family: 'Wemakeprice-Bold';">제목</th>
+						<th style="background-color: #e1e6ff; text-align: center; font-size:15px; font-family: 'Wemakeprice-Bold';">작성자</th>
+						<th style="background-color: #e1e6ff; text-align: center; font-size:15px; font-family: 'Wemakeprice-Bold';">작성일</th>
 					</tr>
 				</thead>
-				<tbody >
-					<tr  >
+				<tbody>
+					<tr>
 						<!-- 테스트 코드 -->
-						<td><input type="text" class="form-control" placeholder="제목을 입력하세요" name="bbsTitle" maxlength="50" ></td>
-						</tr>
-						<tr >
-						<td><textarea col="50" rows="17" type="text" class="form-control" placeholder="내용을 입력하세요" name="bbsContent"
-						 maxlength="2048" "height=350px;"></textarea></td>
-					<!-- textarea:장문의 글 작성 시 사용 -->
+						<td>1</td>
+						<td>멍멍</td>
+						<td>땅콩이</td>
+						<td>2021-04-09</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>멍멍</td>
+						<td>땅콩이</td>
+						<td>2021-04-09</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>멍멍</td>
+						<td>땅콩이</td>
+						<td>2021-04-09</td>
 					</tr>
 				</tbody>
 			</table>
 			<!-- 글쓰기 버튼 생성 - 버튼 오른쪽에 고정되도록 만들어줌-->
-			<input type="submit" class="btn btn-primary pull-right" value="등록">
+			<a href="bbs.jsp" class="btn btn-primary pull-right">글쓰기</a>
 		</div>
-	
-
+	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->
-    
-    
-    
-     
+
+
+
+
 	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* 홈페이지 배경 (격자 배경) */
 .grid_background {
-    background-color: #C9DEFB;
+    background-color: #e3fdf5;
     background-image: url("./images/pattern.png");
     background-size: 100px;
     
@@ -13,14 +13,14 @@
 }
 /* 북 커버 (하늘색 배경) */
 .bookcover {
-    background-color: #F4D4DE;
+    background-color: #FFE6FA;
     border-radius: 10px;
     border: 1px solid #6d7085;
     
-    width: 1200px;
-    height: 650px;
+    width: 1000px;
+    height: 500px;
 
-    margin: 50px auto;
+    margin: 28px auto;
     position: relative;
 }
 /* 북 커버 안쪽 도트 (흰색 점선) */
