@@ -1,0 +1,242 @@
+.TOP_CONTAINER {
+    display: flex;
+}
+
+/* 페이지를 크게 3개의 container로 나눔 (column)
+ * 왼쪽 : Left_container (방문자 수와 프로필이 들어갈 공간)
+ * 가운데 : Center_container (홈페이지 제목 & URL, 메인 박스가 들어갈 공간)
+ * 오른쪽 : Right_container (버튼이 들어갈 공간 - 아직 구현 X)
+ */
+
+.Left_container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+/* Left_container 의 흰색 상자 윗부분 (방문자 수) */
+.L_VISIT_box {
+    flex: 0.5;
+    text-align: center;
+}
+.text_box_in_VISIT {
+    flex: 1;
+    font-family: 'NeoDunggeunmo';
+}
+/* Left_container 의 흰색 상자 부분 (프로필) */
+.L_PROFILE_box {
+    flex: 8;
+    display: flex;
+    
+    flex-direction: column;
+}
+.image_box_in_PF { /* 프로필 이미지 */
+    flex: none;
+    margin: 2em;
+}
+.text_box_in_PF { /* 소개글 적는 부분 */
+    flex: 15 1 auto;
+    margin: 2em;
+    margin-top: 0em;
+    font-family: 'KyoboHand';
+    font-size: 12px;
+}
+/* 아래쪽 종(성별) & 파도타기 버튼 */
+.my_imfo_in_PF {
+    flex: 2 1 auto;
+    display: flex;
+    flex-direction: column;
+    margin: 2em;
+    margin-top: 0em;
+    font-family: 'KyoboHand';
+}
+/* 종 ( 성별 ) */
+.text_in_my_imfo {
+    flex: none;
+    font-size: 1em;
+}
+/* 파도타기 dropdown 버튼 레이아웃 (추가됨) */
+.dropdown_box_in_my_imfo {
+    flex: 0;
+    border: 1px solid #afafaf;
+    margin-top: 0.5em;
+    padding: 5px;
+    position: relative;
+}
+/* dropdown 버튼 */
+.dropdown_button_in_dd_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* dropdown 버튼 텍스트 */
+.text_in_dd_button {
+    font-size: small;
+}
+/* 역삼각형 모양 */
+.reverse_triangle_in_dd_button {
+    width: 0;
+    height: 0;
+    border-left: 4.5px solid transparent;
+    border-right: 4.5px solid transparent;
+    border-top: 5px solid #5f5f5f;
+}
+/* dropdown 내용 */
+.contents_in_dd_box {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: small;
+}
+/* 파도타기 dropdown 버튼 hover 상태일 때 */
+.dropdown_box_in_my_imfo:hover > .contents_in_dd_box {
+    display: block;
+}
+/* contents_in_dd_box 바로 아래에 a 태그가 있을 때 a 태그 속성 */
+.contents_in_dd_box > a {
+    background-color: white;
+    display: block;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+}
+/* contents_in_dd_box 바로 아래에 a 태그 hover 상태일 때 */
+.contents_in_dd_box > a:hover {
+    background-color: #e0e0e0;
+}
+
+.Center_container {
+    flex: 2.5;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+/* Center_container 의 흰색 상자 윗부분 (홈페이지 제목 & URL) */
+.C_TOP_box {
+    flex: 0.5;
+    display: flex;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.Title_box_in_TOP {
+    flex: 1 0 auto;
+    padding-top: 5px;
+}
+.URL_box_in_TOP {
+    flex: 0 1 auto;
+}
+/* Center_container 의 흰색 상자 부분 (Updated news & Miniroom) */
+.C_MAIN_box {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+}
+/* Updated news 부분 */
+.updated_box_in_MAIN {
+    flex: none;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+}
+.title_in_box { /* Updated news & Miniroom 타이틀 부분에 적용 */
+    font-family: 'KOTRA_BOLD-Bold';
+    color: #9faadf;
+    flex: none;
+    border-bottom: 1px solid #738186;
+}
+/* Updated news 의 게시판 부분 */
+.contents_in_updated {
+    flex: auto;
+    display: flex;
+}
+/* 게시판 부분을 2분할하는 레이아웃 
+ * ( 나뉘는 레이아웃 2개 모두 동일한 레이아웃 스타일 적용 )
+ */
+.board_in_contents {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+/* 2분할 게시판 중 왼쪽 게시판 */
+.board_list_left {
+    flex: none;
+    margin-top: 2px;
+    font-size: 13px;
+}
+/* 2분할 게시판 중 오른쪽 게시판 */
+.board_list_right {
+    flex: none;
+    margin-top: 2px;
+    font-size: 13px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px dashed #738186;
+}
+/* 오른쪽 게시판의 한 줄을 2개의 칸으로 나눔 */
+.board_div_2 {
+    flex: 1;
+}
+/* Miniroom 부분 */
+.miniroom_box_in_MAIN {
+    flex: 3 1 auto;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+}
+/* Miniroom 의 내용 부분 (추가됨) */
+.contents_in_miniroom {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+}
+.image_box_in_contents_miniroom {
+    flex: 1;
+    background-image: url("./images/PINK_CLOUD.GIF");
+    background-size: cover;
+}
+
+.Right_container {
+    flex: 0.4;
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    margin-left: 0px;
+}
+/* 오른쪽 메뉴 위쪽 여백 레이아웃 */
+.R_blank_space_box {
+    flex: 1;
+}
+/* 오른쪽 메뉴의 인덱스 버튼 영역 */
+.R_menu_box {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+/* 오른쪽 메뉴의 인덱스 버튼 */
+.button_in_menu {
+    flex: 0 0 1;
+    background-color: #9faadf;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    margin-left: -5px;
+    padding: 5px;
+    padding-left: 0.8rem;
+    color: white;
+    font-size: small;
+    font-family: 'KyoboHand';
+    text-decoration: none;
+}
+/* 오른쪽 메뉴 hover 상태일 때 */
+.button_in_menu:hover {
+    background-color: black;
+}
+/* 오른쪽 메뉴 버튼 클릭했을 때 */
+.R_menu_box > a:active {
+    background-color: #9faadf;
+}
