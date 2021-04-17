@@ -50,7 +50,7 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="main.jsp">메인</a></li>
+					<li class="active"><a href="mainex01.jsp">메인</a></li>
 					<li><a href="list.jsp">게시판</a></li>
 				</ul>
 				<%
@@ -180,7 +180,7 @@
 											</div>
 											<!-- 왼쪽 화살표 버튼 -->
 											<!-- href는 carousel의 id를 가르킨다. -->
-											<a class="left carousel-control"
+											<a class="left carousel-control" opacity
 												href="#carousel-example-generic" role="button"
 												data-slide="prev"> <!-- 왼쪽 화살표 --> <span
 												class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -216,9 +216,12 @@
 						</div>
 
 						<div class="miniroom_box_in_MAIN">
-							<div class="title_in_box">여기에 일기장 작성글 목록</div>
+							<div class="title_in_box">Diary</div>
 							<div class="contents_in_miniroom">
-								<div class="image_box_in_contents_miniroom"></div>
+							<li><a href="list.jsp">2021-04-11</a></li>
+							<li>2021-04-13</li>
+							<li>2021-04-15</li>
+							<li>2021-04-17</li>
 							</div>
 						</div>
 					</div>
@@ -227,7 +230,7 @@
 					<div class="R_blank_space_box"></div>
 					<div class="R_menu_box">
 						<a href="./mainex01.jsp" class="button_in_menu">홈</a> <a
-							href="./diary.jsp" class="button_in_menu">다이어리</a> <a
+							href="./list.jsp" class="button_in_menu">다이어리</a> <a
 							href="./gallery.jsp" class="button_in_menu">사진첩</a> <a
 							href="./visitors.html" class="button_in_menu">방명록</a>
 					</div>
