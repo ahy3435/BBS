@@ -2,6 +2,12 @@
 
 @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
 
+
+*{
+	margin:0;
+	padding:0;
+	
+}
 body {
     background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
 background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
@@ -35,7 +41,7 @@ h2,
 .h2,
 h3,
 .h3 { 
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom:20px;
 }
 img{
@@ -43,5 +49,19 @@ img{
 	width:200px;
 	height:250px;
 	background-color:white;
+}
+div.cardList{
+	display:inline-block;
+	margin:0 auto;
+	width:288px;
+	height:300px;
+	
+} 
+div.card{
+	display:inline-block;
+	margin:0 auto;
+	width:250px;
+	height:300px;
+	
 }
 

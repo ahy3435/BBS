@@ -17,27 +17,9 @@ body {
 </head>
 <body>
 
-	<nav class="navbar navbar-default">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-				aria-expanded="false">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="main.jsp">ooo의 미니홈피</a>
-		</div>
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="main.jsp">메인</a></li>
-				<li><a href="bbs.jsp">게시판</a></li>
-				<li><a href="diary.jsp">일기장</a></li>
-				<li><a href="gallery.jsp">사진첩</a></li>
-			</ul>
-
-		</div>
-	</nav>
+	<jsp:include page="header.jsp"/>
+	
+	
 		<div class="col-lg-4"></div>
 		<div>
 			<div class="jumbotron" style="padding-top: 20px;">
