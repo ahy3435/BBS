@@ -13,6 +13,33 @@
 <link rel="stylesheet" href="./css/test.css" />
 <script src="https://kit.fontawesome.com/66ae39e275.js"
 	crossorigin="anonymous"></script>
+
+<style>
+.galleryDiv {
+	width: 900px;
+	min-height: 500px;
+	height: auto;
+	border-radius: 5px;
+	margin: 0 auto;
+	box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+	/*     padding: 1.1%; */
+	background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
+	top: 50%;
+	left: 50%;
+}
+
+.galleryDiv div {
+	text-align: center;
+}
+
+.cardList {
+	margin-top: 30px !important;
+}
+
+.myImg {
+	height: auto;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -29,14 +56,16 @@
 		<script src="js/bootstrap.js"></script>
 	</header>
 
-	<form style="width: 900px;">
+	<div class="galleryDiv">
 		<h3 class="font1"
-			style="text-align: center; margin-top: 10px; margin-bottom: 10px;">gallery</h3>
+			style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+			<br>Gallery
+		</h3>
 
-
-		<div class="cradList">
-			<div class="card" style="width:200px; padding-top:75px; ">
-				<img style="width:200px; height:auto;  class="card-img-top" src="images/moon.jpg" alt="Card image cap">
+		<div class="cardList">
+			<div class="card">
+				<img class="card-img-top myImg" src="images/moon.jpg"
+					alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text">Some quick example text to build on the
@@ -45,20 +74,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="cradList">
-			<div class="card" style="width:200px; padding-top:75px; ">
-				<img style="width:200px; height:auto;  class="card-img-top" src="images/moon.jpg" alt="Card image cap">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
-				</div>
-			</div>
-		</div>
-		<div class="cradList">
-			<div class="card" style="width:200px; padding-top:75px; ">
-				<img style="width:200px; height:auto;  class="card-img-top" src="images/moon.jpg" alt="Card image cap">
+		<div class="cardList">
+			<div class="card">
+				<img class="card-img-top myImg" src="images/moon.jpg"
+					alt="Card image cap">
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text">Some quick example text to build on the
@@ -69,7 +88,77 @@
 		</div>
 
 
-	</form>
+		<div class="cardList">
+			<div class="card">
+				<img class="card-img-top myImg" src="images/moon.jpg"
+					alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<p class="card-text">Some quick example text to build on the
+						card title and make up the bulk of the card's content.</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="cardList">
+			<div class="card">
+				<img class="card-img-top myImg" src="images/moon.jpg"
+					alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<p class="card-text">Some quick example text to build on the
+						card title and make up the bulk of the card's content.</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="cardList">
+			<div class="card">
+				<img class="card-img-top myImg" src="images/moon.jpg"
+					alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<p class="card-text">Some quick example text to build on the
+						card title and make up the bulk of the card's content.</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="cardList">
+			<div class="card">
+				<img class="card-img-top myImg" src="images/moon.jpg"
+					alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<p class="card-text">Some quick example text to build on the
+						card title and make up the bulk of the card's content.</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="cardList">
+			<div class="card">
+				<img class="card-img-top myImg" src="images/moon.jpg"
+					alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<p class="card-text">Some quick example text to build on the
+						card title and make up the bulk of the card's content.</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</div>
 
 
 </body>
