@@ -19,7 +19,7 @@ public class UserDAO {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/bbs";
 			String dbID = "root"; //db계정
-			String dbPassword = "suho0522"; //db비번
+			String dbPassword = "abc123"; //db비번
 			//driver는 mysql에 접속할 수 있도록 도와주는 하나의 매개체
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
