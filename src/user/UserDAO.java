@@ -8,27 +8,27 @@ import java.sql.ResultSet;
 
 public class UserDAO {
 
-	private Connection conn; //ìë°”ì™€ ë°ì´í„°ë² ì´ìŠ¤ë¥¼ ì—°ê²°í•˜ëŠ” í•˜ë‚˜ì˜ ì²´
-	private PreparedStatement pstmt; //í•˜ë‚˜ì˜ ì •ë³´ë¥¼ ë‹´ì„ ìˆ˜ ìˆëŠ” í•˜ë‚˜ì˜ ê°ì²´
-	private ResultSet rs; //ê²°ê³¼ê°’ ë°›ì•„ì˜¤ê¸°
+	private Connection conn; //ÀÚ¹Ù¿Í µ¥ÀÌÅÍº£ÀÌ½º¸¦ ¿¬°áÇÏ´Â ÇÏ³ªÀÇ Ã¼
+	private PreparedStatement pstmt; //ÇÏ³ªÀÇ Á¤º¸¸¦ ´ãÀ» ¼ö ÀÖ´Â ÇÏ³ªÀÇ °´Ã¼
+	private ResultSet rs; //°á°ú°ª ¹Ş¾Æ¿À±â
 
-	//ê¸°ë³¸ ìƒì„±ì
-	//UserDAOê°€ ì‹¤í–‰ë˜ë©´ ìë™ìœ¼ë¡œ ìƒì„±ë˜ëŠ” ë¶€ë¶„
+	//±âº» »ı¼ºÀÚ
+	//UserDAO°¡ ½ÇÇàµÇ¸é ÀÚµ¿À¸·Î »ı¼ºµÇ´Â ºÎºĞ
 
-	public UserDAO() { //mysqlì— ì ‘ì†í•  ìˆ˜ ìˆë„ë¡ ë„ì™€ì¤Œ
+	public UserDAO() { //mysql¿¡ Á¢¼ÓÇÒ ¼ö ÀÖµµ·Ï µµ¿ÍÁÜ
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/bbs";
-			String dbID = "root"; //dbê³„ì •
-			String dbPassword = "suho0522"; //dbë¹„ë²ˆ
-			//driverëŠ” mysqlì— ì ‘ì†í•  ìˆ˜ ìˆë„ë¡ ë„ì™€ì£¼ëŠ” í•˜ë‚˜ì˜ ë§¤ê°œì²´
+			String dbID = "root"; //db°èÁ¤
+			String dbPassword = "suho0522"; //dbºñ¹ø
+			//driver´Â mysql¿¡ Á¢¼ÓÇÒ ¼ö ÀÖµµ·Ï µµ¿ÍÁÖ´Â ÇÏ³ªÀÇ ¸Å°³Ã¼
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		}catch (Exception e) {
-			e.printStackTrace(); //ì˜¤ë¥˜ê°€ ë¬´ì—‡ì¸ì§€ ì¶œë ¥
+			e.printStackTrace(); //¿À·ù°¡ ¹«¾ùÀÎÁö Ãâ·Â
 		}
-	} 
+	}
 
-	//ì‹¤ì œë¡œ ë¡œê·¸ì¸ì„ ì‹œë„í•˜ëŠ” í•¨ìˆ˜
+	//½ÇÁ¦·Î ·Î±×ÀÎÀ» ½ÃµµÇÏ´Â ÇÔ¼ö
 	public int login(String userID, String userPassword) {
 		String SQL = "SELECT userPassword FROM USER WHERE userID= ?";
 		try {
@@ -37,18 +37,18 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				if(rs.getString(1).equals(userPassword))
-					return 1; //ë¡œê·¸ì¸ ì„±ê³µ
+					return 1; //·Î±×ÀÎ ¼º°ø
 				else
-					return 0; //ë¹„ë°€ë²ˆí˜¸ ë¶ˆì¼ì¹˜			 
+					return 0; //ºñ¹Ğ¹øÈ£ ºÒÀÏÄ¡			 
 			}
-			return -1; //ì•„ì´ë””ê°€ ì—†ìŒ
+			return -1; //¾ÆÀÌµğ°¡ ¾øÀ½
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return -2; //ë°ì´í„°ë² ì´ìŠ¤ ì˜¤ë¥˜ ì˜ë¯¸
+		return -2; //µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù ÀÇ¹Ì
 	}
 	
-	//íšŒì›ê°€ì… ê¸°ëŠ¥ ë‹´ë‹¹í•˜ëŠ” join ë©”ì†Œë“œ ì¶”ê°€
+	//È¸¿ø°¡ÀÔ ±â´É ´ã´çÇÏ´Â join ¸Ş¼Òµå Ãß°¡
 	public int join(User user) {
         String SQL = "INSERT INTO USER VALUES (?, ?, ?, ?, ?)";
         try {
@@ -62,7 +62,7 @@ public class UserDAO {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        return -1; // ë°ì´í„°ë² ì´ìŠ¤ ì˜¤ë¥˜
+        return -1; // µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
     }
 	
 	
