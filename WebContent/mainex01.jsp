@@ -178,8 +178,7 @@
 					<div class="R_menu_box">
 						<a href="./mainex01.jsp" class="button_in_menu">홈</a> <a
 							href="./list.jsp" class="button_in_menu">다이어리</a> <a
-							href="./gallery.jsp" class="button_in_menu">사진첩</a> <a
-							href="./visitors.html" class="button_in_menu">방명록</a>
+							href="./gallery.jsp" class="button_in_menu">사진첩</a>
 					</div>
 				</div>
 			</div>
