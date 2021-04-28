@@ -23,11 +23,11 @@ body {
 		<div class="col-lg-4"></div>
 		<div>
 			<div class="jumbotron" style="padding-top: 20px;">
-				<form method="post" action="joinAction.jsp">
+				<form method="post" action="joinProsex01.jsp">
 					<h3 class="font1" style="text-align: center;">Join</h3>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="아이디"
-							name="userID" maxlength="20">
+							name="userId" maxlength="20">
 					</div>
 					<div class="form-group">
 						<input type="password" class="form-control" placeholder="비밀번호"
