@@ -23,27 +23,27 @@
 		
 		<a	style="position: relative; font-family: 'Wemakeprice-Bold'; bottom: 107.5px; left: 37px; font-size: 17px;">ID</a>
 		<div class="form-group" style="display: inline-block; position: relative; bottom: 107.5px; left: 70px; width: 200px;">
-			<input type="text" class="form-control" placeholder="Id" name="userID" readonly="readonly">
+			<input type="text" class="form-control" placeholder="Id" name="userId" readonly="readonly">
 		</div>
 
 		<a style="position: relative; font-family: 'Wemakeprice-Bold'; bottom: 107.5px; left: 107px; font-size: 17px;">GENDER</a>
         <div class="form-group" style="display: inline-block; position: relative; bottom: 107.5px; left: 139px; width: 200px;">
-		<input type="text" class="form-control" placeholder="gender" name="userID" maxlength="20">
+		<input type="text" class="form-control" placeholder="gender" name="gender" maxlength="20">
 		</div>
 
 		<a style="position: relative; font-family: 'Wemakeprice-Bold'; top: 20px; right: 475px; font-size: 17px;">PWD</a>
         <div class="form-group" style="display: inline-block; position: relative; bottom: 125px; left: 292px; width: 200px;">
-		<input type="text" class="form-control" placeholder="pwd" name="userID" maxlength="20">
+		<input type="text" class="form-control" placeholder="pwd" name="userPwd" maxlength="20">
 		</div>
 
 		<a style="position: relative; font-family: 'Wemakeprice-Bold'; bottom: 125px; left: 338px; font-size: 17px;">NAME</a>
         <div class="form-group" style="display: inline-block; position: relative; bottom: 125px; left: 381px; width: 200px;">
-		<input type="text" class="form-control" placeholder="gender" name="userID" maxlength="20">
+		<input type="text" class="form-control" placeholder="gender" name="userName" maxlength="20">
 		</div>
 
 		<a style="position: relative; font-family: 'Wemakeprice-Bold'; bottom: 31px; right: 125px; font-size: 17px;">EMAIL</a>
         <div class="form-group" style="display: inline-block; position: relative; bottom: 33px; right: 95px; width: 300px;">
-		<input type="text" class="form-control" placeholder="email" name="userID" maxlength="20">
+		<input type="text" class="form-control" placeholder="email" name="email" maxlength="20">
 		</div>
 
 		<textarea style="width: 200px; height: 90px; bottom: 20px; position: relative;" name="info"></textarea>

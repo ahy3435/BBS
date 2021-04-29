@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
-<%@ page import="mini.MiniUser"%>
+<%@ page import="mini.*"%>
 <%@page import="java.util.*,java.io.*,  javax.sql.*, javax.naming.*"%>
 <!DOCTYPE html>
 <html>
@@ -10,47 +10,37 @@
 <title>회원가입</title>
 </head>
 <body>
-	<%
-	request.setCharacterEncoding("UTF-8");
-	String userId = request.getParameter("userId");
-	String userPassword = request.getParameter("userPassword");
-	String userName = request.getParameter("userName");
-	String userEmail = request.getParameter("userEmail");
-	String userGender = request.getParameter("userGender");
+	<%request.setCharacterEncoding("utf-8"); %>
 	
-	if (userId == null || userPassword == null || userName == null || userEmail == null || userGender == null) {
+	<jsp:useBean id="user" class="mini.MiniUser" />
+	<jsp:setProperty property="*" name="user" />
+
+	<%
+	if (user.getUserId() == null || user.getUserPwd() == null || user.getUserName() == null || user.getEmail() == null) {
 		%><script>
 			alert("입력이 안된 사항이 있습니다");
 			history.back();
 		</script>
 		<%
-		}
-
-	else {InitialContext ic = new InitialContext();
-	DataSource ds = (DataSource) ic.lookup("java:comp/env/jdbc/myoracle");
-	Connection conn = ds.getConnection();
-	String sql = "INSERT INTO MINIUSER (USERID,USERPWD,USERNAME,EMAIL,GENDER) VALUES(?,?,?,?,?)";
-	PreparedStatement pstmt = conn.prepareStatement(sql);
-	pstmt.setString(1, userId);
-	pstmt.setString(2, userPassword);
-	pstmt.setString(3, userName);
-	pstmt.setString(4, userEmail);
-	pstmt.setString(5, userGender);
-	ResultSet rs = pstmt.executeQuery();
-		
-	//회원가입에 성공했을 때 세션을 부여하는 코드 추가
-	session.setAttribute("userId", userId);
-	%><script>
-		alert("회원가입 성공!");
-	</script>
+		}else{
+		miniUserDAO udao = new miniUserDAO();
+	
+int result = udao.joinUser(user);
+if(result == 1){
+	String loginId = (String)session.getAttribute("userId");
+	%><script>alert('환영합니다! "${user.getUserName()}" 님!');</script>
 	<%
+}
+
+else if(result ==-1){
+
+	%><script>alert('이미 존재하는 아이디 입니다.'); history.back();</script>
+	<%
+}}
+%>
+
 	
 
-	rs.close();
-	pstmt.close();
-	conn.close();
 
-	response.sendRedirect("login.jsp");}
-	%>
 </body>
 </html>
