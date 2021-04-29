@@ -1,0 +1,8 @@
+WebContent/WEB-INF/lib/ojdbc8.jar
+WebContent/WEB-INF/lib/cos.jar
+src/file/FileDAO.java
+src/usertest/User.java
+src/usertest/UserDAO.java
+WebContent/gallerytest.jsp
+WebContent/galleryUploadAction.jsp
+WebContent/WEB-INF/web.xml
