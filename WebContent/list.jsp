@@ -1,5 +1,10 @@
+<%@ page import="javax.security.auth.callback.ConfirmationCallback"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.io.PrintWriter"%>
+<%@ page import="diary.DiaryDAO"%>
+<%@ page import="diary.Diary"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +15,26 @@
 <link rel="stylesheet" href="./css/1_font_style.css" />
 <title>ㅇㅇㅇ의 미니홈피</title>
 </head>
+	<h3 class="font1"
+			style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+			<br>Diary</h3>		
 <body>
+
+<% request.setCharacterEncoding("UTF-8"); %>
 	<%
 		// 메인 페이지로 이동했을 때 세션에 값이 담겨있는지 체크
 		String userID = null;
-		if(session.getAttribute("userID") != null){
-			userID = (String)session.getAttribute("userID");
-		}
-	%>
-	<jsp:include page="header.jsp"/>
+	if (session.getAttribute("userID") != null) {
+		userID = (String) session.getAttribute("userID");
+	}
+	int pageNumber = 1; //기본 페이지 넘버
+
+	//페이지 넘버값이 있을때
+	if (request.getParameter("pageNumber") != null) {
+		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+	}
+%>
+
 	<!-- 게시판 메인 페이지 영역 시작 -->
 	<div class="container">
 		<div class="row">
@@ -34,29 +50,54 @@
 					</tr>
 				</thead>
 				<tbody>
+				<%
+						DiaryDAO diaryDAO = new DiaryDAO();
+						
+						ArrayList<Diary> list = diaryDAO.getList(pageNumber);
+						for (int i = 0; i < list.size(); i++) {
+					%>
 					<tr>
-						<!-- 테스트 코드 -->
-						<td>1</td>
-						<td>멍멍</td>
-						<td>땅콩이</td>
-						<td>2021-04-09</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>멍멍</td>
-						<td>땅콩이</td>
-						<td>2021-04-09</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>멍멍</td>
-						<td>땅콩이</td>
-						<td>2021-04-09</td>
-					</tr>
+						<td><%=list.get(i).getDiaryNo()%></td>
+						<td><a href="view.jsp?diaryNo=<%=list.get(i).getDiaryNo()%>">
+						<%=list.get(i).getDiaryTitle()%></a></td>
+						<td><%=list.get(i).getUserID()%></td>
+						<td><%=list.get(i).getDiaryDate() %></td>
+						</tr>
+					<%
+						}
+					%>
 				</tbody>
 			</table>
-			<!-- 글쓰기 버튼 생성 - 버튼 오른쪽에 고정되도록 만들어줌-->
-			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			<!-- 페이지 넘기기 -->
+			<%
+				if (pageNumber != 1) {
+			%>
+			<a href="list.jsp?pageNumber=<%=pageNumber - 1%>"
+				class="btn btn-success btn-arrow-left">이전</a>
+			<%
+				}
+				if (diaryDAO.nextPage(pageNumber)) {
+			%>
+			<a href="list.jsp?pageNumber=<%=pageNumber + 1%>"
+				class="btn btn-success btn-arrow-left">다음</a>
+			<%
+				}
+			%>
+			<!-- 회원만 넘어가도록 -->
+			<%
+				//if logined userID라는 변수에 해당 아이다가 담기고 if not null
+				if (session.getAttribute("userID") != null) {
+			%>
+			<a href="write.jsp" class="btn btn-primary pull-right">작성</a>
+			<%
+				} else {
+			%>
+			<a href="#" class="btn btn-primary pull-right" onclick="if(confirm('로그인 하세요'))location.href='login.jsp';">작성</a>
+
+			<%
+				}
+			%>
+
 		</div>
 	</div>
 	<!-- 게시판 메인 페이지 영역 끝 -->
