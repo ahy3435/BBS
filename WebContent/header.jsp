@@ -23,8 +23,11 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="main.jsp">ooo의 미니홈피</a>
+		
+			<a class="navbar-brand">ooo의 미니홈피</a>
+			
 		</div>
+	<%-- 		<% if(userID != null){ %> --%>
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
@@ -34,6 +37,7 @@
 				<li><a href="gallery.jsp">사진첩</a></li>
 			</ul>
 		</div>
+	<%-- 	<%} else out.print("<script>alert('비밀번호 불일치');	history.back();	</script>");  %> --%>
 	</nav>
 
 </body>
