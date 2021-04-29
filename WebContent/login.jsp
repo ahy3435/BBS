@@ -41,10 +41,10 @@ body {
 			<form method="post" action="loginPros.jsp">
 				<h3 class="font1" style="text-align:center">Login</h3>
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Id" name="userID" maxlength="20">
+					<input type="text" class="form-control" placeholder="Id" name="userId" maxlength="20">
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control" placeholder="Password" name="userPassword" maxlength="20">
+					<input type="password" class="form-control" placeholder="Password" name="userPwd" maxlength="20">
 				</div>
 				<input type="submit" class="btn-primary1 form-control" value="회원가입" onclick="location.href='join.jsp'">
 				<input type="submit" class="btn-primary form-control" value="로그인">

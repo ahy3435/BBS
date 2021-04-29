@@ -46,7 +46,7 @@
 		<input type="text" class="form-control" placeholder="email" name="userID" maxlength="20">
 		</div>
 
-		<input style="width: 200px; height: 90px; bottom: 20px; position: relative;" type="text" name="info"> 
+		<textarea style="width: 200px; height: 90px; bottom: 20px; position: relative;" name="info"></textarea>
 		
 		<input style="position: relative; top: 38px;" type="submit" class="btn-primary1 form-control" value="수정하기">
 

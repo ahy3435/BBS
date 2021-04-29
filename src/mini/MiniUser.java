@@ -22,16 +22,19 @@ public class MiniUser {
 		this.setInfotext(infotext);
 
 	}
-	
+
 	public MiniUser(String userId,String userPwd,String userName,String email,String gender) {
 		this.userId=userId;
 		this.userPwd=userPwd;
 		this.userName=userName;
 		this.email=email;
 		this.gender=gender;
-	
-	}
 
+	}
+	public MiniUser(String userId,String userPwd) {
+		this.userId=userId;
+		this.userPwd=userPwd;
+	}
 	public String getUserId() {
 		return userId;
 	}
