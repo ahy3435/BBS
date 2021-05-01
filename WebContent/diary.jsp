@@ -16,9 +16,9 @@
 <header>
 	<%
 		// 메인 페이지로 이동했을 때 세션에 값이 담겨있는지 체크
-		String userID = null;
-		if(session.getAttribute("userID") != null){
-			userID = (String)session.getAttribute("userID");
+		String userId = null;
+		if(session.getAttribute("userId") != null){
+			userId= (String)session.getAttribute("userId");
 		}
 	%>
 	<nav class="navbar navbar-default"> <!-- 네비게이션 -->
@@ -43,7 +43,7 @@
 			</ul>
 			<%
 				// 로그인 하지 않았을 때 보여지는 화면
-				if(userID == null){
+				if(userId == null){
 			%>
 			<!-- 헤더 우측에 나타나는 드랍다운 영역 -->
 			<ul class="nav navbar-nav navbar-right">

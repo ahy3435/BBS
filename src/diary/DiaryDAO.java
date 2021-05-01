@@ -57,14 +57,14 @@ public class DiaryDAO {// 데이터 베이스 접근 객체의 약자
 		}
 		return -1;// 데이터베이스 오류
 	}
-	public int write(String diaryTitle, String userID, String diaryContent) {
+	public int write(String diaryTitle, String userId, String diaryContent) {
 		String SQL = "INSERT INTO DIARY VALUES(?,?,?,to_char(sysdate,'yyyy-mm-dd hh24:mi'),?,?)";
 	
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
 			pstmt.setString(2, diaryTitle);
-			pstmt.setString(3, userID);
+			pstmt.setString(3, userId);
 			pstmt.setString(4, diaryContent);
 			pstmt.setInt(5, 1);
 			return pstmt.executeUpdate();

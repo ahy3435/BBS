@@ -16,7 +16,7 @@
 <title>ㅇㅇㅇ의 미니홈피</title>
 </head>
 
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="../header.jsp"/>
 	<h3 class="font1"
 			style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
 			<br>Diary</h3>		
@@ -31,13 +31,13 @@
 					</ul></li>
 			</ul>
 <%
-		//로긴 한사람이면 userID라는 변수에 해당 아이디가 담기고 그렇지 않으면 null값
-		String userID = null;
-		if (session.getAttribute("userID") != null) {
-			userID = (String) session.getAttribute("userID");
+		//로긴 한사람이면 userId라는 변수에 해당 아이디가 담기고 그렇지 않으면 null값
+		String userId = null;
+		if (session.getAttribute("userId") != null) {
+			userId = (String) session.getAttribute("userId");
 		}
 		//로그인 안한경우
-		if (userID == null) {
+		if (userId == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('로그인 하세요.')");
@@ -57,7 +57,7 @@
 			script.println("</script>");
 		}
 		Diary diary = new DiaryDAO().getDiary(diaryNo);
-		if (!userID.equals(diary.getUserID())) {
+		if (!userId.equals(diary.getUserId())) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('권한이 없습니다.')");

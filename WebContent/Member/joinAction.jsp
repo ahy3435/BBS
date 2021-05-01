@@ -27,10 +27,9 @@
 	miniUserDAO udao = new miniUserDAO();
 
 	int result = udao.joinUser(user);
-	if (result == 1) {
-		String loginId = (String) session.getAttribute("userId");
+	if (result == 1) {		
 	%><script>
-		alert('환영합니다! "${user.getUserName()}" 님!');
+		alert('환영합니다! "${user.getUserName()}" 님!'); document.location.href="login.jsp";
 	</script>
 	<%
 	}

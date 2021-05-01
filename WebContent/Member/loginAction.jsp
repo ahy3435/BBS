@@ -11,7 +11,10 @@
 </head>
 <body>
 
-	<%request.setCharacterEncoding("utf-8"); %>
+	<%request.setCharacterEncoding("utf-8"); 
+	String userId=request.getParameter("userId");
+	String userPwd=request.getParameter("userPwd");
+	%>
 	
 	<jsp:useBean id="user" class="mini.MiniUser" />
 	<jsp:setProperty property="*" name="user" />
@@ -19,32 +22,33 @@
 <%InitialContext ic = new InitialContext();
 DataSource ds = (DataSource)ic.lookup("java:comp/env/jdbc/myoracle");
 Connection conn = ds.getConnection();
-String sql = "select userid, userpwd from miniuser where userid=?";
+String sql = "select * from miniuser where userid=?";
 PreparedStatement pstmt = conn.prepareStatement(sql);
-pstmt.setString(1, user.getUserId());
+pstmt.setString(1,userId);
 ResultSet rs = pstmt.executeQuery();
 
 
 while(rs.next()){
-	if((user.getUserId()).equals(rs.getString(1))&&(user.getUserPwd()).equals(rs.getString(2))){
-		session.setAttribute("memberId",user.getUserId());	
-		session.setAttribute("memberPwd",user.getUserPwd());
-		response.sendRedirect("mainex01.jsp");
-		break;
-	}else if(!(user.getUserId()).equals(rs.getString(1))){
+	if(userId.equals(rs.getString(1))&&userPwd.equals(rs.getString(2))){
+		session.setAttribute("userId",userId);	
+		session.setAttribute("userPwd",userPwd);
+		%><script>
+		document.location.href="mainex01.jsp";
+	</script>
+	<%
+
+	}else if(!userId.equals(rs.getString(1))){
 		%><script>
 			alert("아이디가 존재하지 않습니다");
 			history.back();
 		</script>
 		<%
-		break;
-	}else if((user.getUserId()).equals(rs.getString(1))&&!(user.getUserPwd()).equals(rs.getString(2))){
+	}else if(userId.equals(rs.getString(1))&&!userPwd.equals(rs.getString(2))){
 		%><script>
 			alert("비밀번호가 틀립니다");
 			history.back();
 		</script>
-		<%
-		break;
+		<%	
 	}	
 	
 }	

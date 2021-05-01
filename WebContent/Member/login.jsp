@@ -33,12 +33,12 @@ body {
 </head>
 <body>
 
-	<jsp:include page="header.jsp" />
+	<jsp:include page="../header.jsp" />
 
 	<div class="col-lg-4"></div>
 	<div>
 		<div class="jumbotron" style="padding-top:20px;">
-			<form method="post" action="loginPros.jsp">
+			<form method="post" action="loginAction.jsp">
 				<h3 class="font1" style="text-align:center">Login</h3>
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Id" name="userId" maxlength="20">

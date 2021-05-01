@@ -19,13 +19,14 @@
 			style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
 			<br>Diary</h3>		
 <body>
+	<jsp:include page="../header.jsp" />
 
 <% request.setCharacterEncoding("UTF-8"); %>
 	<%
 		// 메인 페이지로 이동했을 때 세션에 값이 담겨있는지 체크
-		String userID = null;
-	if (session.getAttribute("userID") != null) {
-		userID = (String) session.getAttribute("userID");
+		String userId = null;
+	if (session.getAttribute("userId") != null) {
+		userId = (String) session.getAttribute("userId");
 	}
 	int pageNumber = 1; //기본 페이지 넘버
 
@@ -60,7 +61,7 @@
 						<td><%=list.get(i).getDiaryNo()%></td>
 						<td><a href="view.jsp?diaryNo=<%=list.get(i).getDiaryNo()%>">
 						<%=list.get(i).getDiaryTitle()%></a></td>
-						<td><%=list.get(i).getUserID()%></td>
+						<td><%=list.get(i).getUserId()%></td>
 						<td><%=list.get(i).getDiaryDate() %></td>
 						</tr>
 					<%
@@ -86,7 +87,7 @@
 			<!-- 회원만 넘어가도록 -->
 			<%
 				//if logined userID라는 변수에 해당 아이다가 담기고 if not null
-				if (session.getAttribute("userID") != null) {
+				if (session.getAttribute("userId") != null) {
 			%>
 			<a href="write.jsp" class="btn btn-primary pull-right">작성</a>
 			<%

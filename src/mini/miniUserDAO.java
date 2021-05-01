@@ -4,8 +4,10 @@ package mini;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 
@@ -63,5 +65,43 @@ public class miniUserDAO {
 		}return result;
 
 
+	}
+	public MiniUser isUser(String userId) {
+		String sql = null;
+		
+		try {
+			InitialContext ic = new InitialContext();
+			DataSource ds = (DataSource)ic.lookup("java:comp/env/jdbc/myoracle");
+			Connection conn = ds.getConnection();
+			MiniUser user = new MiniUser();
+			sql = "SELECT * FROM MINIUSER WHERE USERID=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,userId);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				
+				user.setUserId(rs.getString(1));
+				user.setUserPwd(rs.getString(2));
+				user.setUserName(rs.getString(3));
+				user.setEmail(rs.getString(4));
+				user.setGender(rs.getString(5));
+				user.setImg(rs.getString(6));
+				user.setInfotext(rs.getString(7));
+				
+			}
+			return user;
+			
+		
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+		
+		
 	}
 }

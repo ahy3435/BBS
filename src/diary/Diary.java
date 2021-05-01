@@ -3,7 +3,7 @@ package diary;
 public class Diary {
 		private int diaryNo;
 		private String diaryTitle;
-		private String userID;
+		private String userId;
 		private String diaryDate;
 		private String diaryContent;
 		private int diaryAvailable;
@@ -20,11 +20,11 @@ public class Diary {
 		public void setDiaryNo(int diaryNo) {
 			this.diaryNo = diaryNo;
 		}
-		public String getUserID() {
-			return userID;
+		public String getUserId() {
+			return userId;
 		}
-		public void setUserID(String userID) {
-			this.userID = userID;
+		public void setUserID(String userId) {
+			this.userId = userId;
 		}
 		
 		public String getDiaryContent() {

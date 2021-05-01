@@ -35,6 +35,10 @@ public class MiniUser {
 		this.userId=userId;
 		this.userPwd=userPwd;
 	}
+	public MiniUser(String userId) {
+		this.userId=userId;
+	
+	}
 	public String getUserId() {
 		return userId;
 	}

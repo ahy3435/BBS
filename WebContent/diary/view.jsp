@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="../header.jsp"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -28,10 +28,10 @@
 
 
 	<%
-		//로긴한 사람이라면 userID라는 변수에 해당 아이디가 담기고 그렇지 않으면 null값
-		String userID = null;
-		if (session.getAttribute("userID") != null) {
-			userID = (String) session.getAttribute("userID");
+		//로긴한 사람이라면 userId라는 변수에 해당 아이디가 담기고 그렇지 않으면 null값
+		String userId = null;
+		if (session.getAttribute("userId") != null) {
+			userId = (String) session.getAttribute("userId");
 		}
 		int diaryNo = 0;
 		if (request.getParameter("diaryNo") != null) {
@@ -49,7 +49,7 @@
 
 			<%
 				//로긴 안 된경우
-				if (userID == null) {
+				if (userId == null) {
 			%>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -95,7 +95,7 @@
 					</tr>
 					<tr>
 						<td style="width: 20%; background-color: #eeeeee;">작성자</td>
-						<td colspan="2"><%=diary.getUserID()%></td>
+						<td colspan="2"><%=diary.getUserId()%></td>
 					</tr>
 					<tr>
 						<td style="width: 20%; background-color: #eeeeee;">작성일</td>
@@ -111,7 +111,7 @@
 			<a href="list.jsp" class="btn btn-primary">목록</a>
 			<%
 				//글작성자 본인일시 수정 삭제 가능
-				if (userID != null && userID.equals(diary.getUserID())) {
+				if (userId != null && userId.equals(diary.getUserId())) {
 			%>
 			<a href="diaryUpdate.jsp?diaryNo=<%=diaryNo%>" class="btn btn-primary">수정</a>
 			<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="diaryDeleteAction.jsp?diaryNo=<%= diaryNo %>" class="btn btn-primary">삭제</a>

@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="../header.jsp"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
@@ -24,12 +24,12 @@
 <body>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%
-		String userID = null;
-		if (session.getAttribute("userID") != null) {//유저아이디 이름으로 세션이 존재하는 회원들은
-			userID = (String) session.getAttribute("userID");//유저아이디에 해당 세션값을 넣어준다
+		String userId = null;
+		if (session.getAttribute("userId") != null) {//유저아이디 이름으로 세션이 존재하는 회원들은
+			userId = (String) session.getAttribute("userId");//유저아이디에 해당 세션값을 넣어준다
 
 		}
-		if (userID == null) {
+		if (userId == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('로그인 하세요.')");
@@ -50,7 +50,7 @@
 			script.println("</script>");
 		}
 		Diary diary = new DiaryDAO().getDiary(diaryNo);
-		if (!userID.equals(diary.getUserID())) {
+		if (!userId.equals(diary.getUserId())) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('권한이 없습니다.')");

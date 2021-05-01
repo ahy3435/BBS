@@ -16,12 +16,12 @@ request.setCharacterEncoding("UTF-8");
 <title>ㅇㅇㅇ의 미니홈피</title>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="../header.jsp" />
 	<%
 	// 메인 페이지로 이동했을 때 세션에 값이 담겨있는지 체크
-	String userID = null;
-	if (session.getAttribute("userID") != null) {
-		userID = (String) session.getAttribute("userID");
+	String userId = null;
+	if (session.getAttribute("userId") != null) {
+		userId = (String) session.getAttribute("userId");
 	}
 	%>
 
@@ -49,7 +49,7 @@ request.setCharacterEncoding("UTF-8");
 								placeholder="제목을 입력하세요" name="diaryTitle" maxlength="50"></td>
 						</tr>
 						<tr>
-							<td><textarea col="50" rows="17" type="text"
+							<td><textarea col="50" rows="15" type="text"
 									class="form-control" placeholder="내용을 입력하세요"
 									name="diaryContent" maxlength="2048" "height=350px;"></textarea></td>
 							<!-- textarea:장문의 글 작성 시 사용 -->

@@ -20,18 +20,18 @@ request.setCharacterEncoding("UTF-8");
 <body>
 
 	<%
-	String userID = null;
-	if (session.getAttribute("userID") != null) {
-		userID = (String) session.getAttribute("userID");
+	String userId = null;
+	if (session.getAttribute("userId") != null) {
+		userId = (String) session.getAttribute("userId");
 	}
-	if (userID == null) {
+	if (userId == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('로그인 해주세요.')");
 		script.println("location.href='login.jsp'");
 		script.println("</script>");
 	} else {
-		if (diary.getDiaryTitle() == null || diary.getDiaryTitle() == null) {
+		if (diary.getDiaryTitle() == null || diary.getDiaryContent() == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('입력이 안 된 사항이 있습니다.')");
@@ -39,7 +39,7 @@ request.setCharacterEncoding("UTF-8");
 			script.println("</script>");
 		} else {
 			DiaryDAO diaryDAO = new DiaryDAO();
-			int result = diaryDAO.write(diary.getDiaryTitle(), userID, diary.getDiaryContent());
+			int result = diaryDAO.write(diary.getDiaryTitle(), userId, diary.getDiaryContent());
 			if (result == -1) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
