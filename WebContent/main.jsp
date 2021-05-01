@@ -191,10 +191,10 @@ rs.next();
 				<div class="Right_container z_index_10">
 					<div class="R_blank_space_box"></div>
 					<div class="R_menu_box">
-						<a href="./mainex01.jsp" class="button_in_menu">홈</a> <a
-							href="./list.jsp" class="button_in_menu">다이어리</a> <a
-							href="./gallery.jsp" class="button_in_menu">사진첩</a>
-							<a href="./profile.jsp" class="button_in_menu">개인 정보</a>
+						<a href="/main.jsp" class="button_in_menu">홈</a> <a
+							href="diary/list.jsp" class="button_in_menu">다이어리</a> <a
+							href="gallery/gallery.jsp" class="button_in_menu">사진첩</a>
+							<a href="member/proFile.jsp" class="button_in_menu">개인 정보</a>
 					</div>
 				</div>
 			</div>

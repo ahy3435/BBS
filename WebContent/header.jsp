@@ -6,7 +6,7 @@
 <%@ page import="com.oreilly.servlet.*"%>
 
 <meta name="viewport" content="width=device-width" , initial-scale="1">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap.css"/>
 <link rel="stylesheet" href="./css/design.css" />
 <link rel="stylesheet" href="./css/1_font_style.css" />
 <!DOCTYPE html>
@@ -17,6 +17,7 @@
 </head>
 <body>
 
+<c:set var="contextPath" value="<%=request.getContextPath()%>"/>
 	<%
 	request.setCharacterEncoding("utf-8");
 	%>
@@ -52,10 +53,10 @@ rs.next();
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li><a href="list.jsp">일기장</a></li>
-				<li><a href="gallery.jsp">사진첩</a></li>
-				<li><a href="proFile.jsp">프로필</a></li>
-				<li><a href="logoutAction.jsp">로그 아웃</a></li>
+				<li><a href="${contextPath}/diary/list.jsp">일기장</a></li>
+				<li><a href="${contextPath}/gallery/gallery.jsp">사진첩</a></li>
+				<li><a href="${contextPath}/member/proFile.jsp">프로필</a></li>
+				<li><a href="${contextPath}/member/logoutAction.jsp">로그 아웃</a></li>
 			</ul>
 		</div>
 		<%}

@@ -3,6 +3,7 @@
     <%@ page import="java.sql.*"%>
 <%@ page import="mini.MiniUser"%>
 <%@page import="java.util.*,java.io.*,  javax.sql.*, javax.naming.*"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:set var="contextPath" value="<%=request.getContextPath()%>"/>
 
 	<%request.setCharacterEncoding("utf-8"); 
 	String userId=request.getParameter("userId");
@@ -33,7 +35,7 @@ while(rs.next()){
 		session.setAttribute("userId",userId);	
 		session.setAttribute("userPwd",userPwd);
 		%><script>
-		document.location.href="mainex01.jsp";
+		document.location.href="../main.jsp";
 	</script>
 	<%
 

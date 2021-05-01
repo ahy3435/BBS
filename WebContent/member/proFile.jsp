@@ -3,16 +3,18 @@
 		  <%@ page import="java.sql.*"%>
 <%@ page import="mini.MiniUser"%>
 <%@page import="java.util.*,java.io.*,  javax.sql.*, javax.naming.*"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="./css/test.css" />
-<link rel="stylesheet" href="./css/1_font_style.css" />
+<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/test.css" />
+<link rel="stylesheet" href="../css/1_font_style.css" />
 </head>
 <body>
+<c:set var="contextPath" value="<%=request.getContextPath()%>"/>
 <%request.setCharacterEncoding("utf-8"); %>
 	
 	<jsp:useBean id="user" class="mini.MiniUser" />
@@ -38,7 +40,7 @@ rs.next();
 	<form action="proFileAction.jsp" style="width: 900px;">
 		<h3 class="font1" style="text-align: center; margin-top: 10px;">Profile</h3>
 
-		<img  name="img" style="position: static;" src="images/background1.jpg"> 
+		<img  name="img" style="position: static;" src="../images/background1.jpg"> 
 		
 		
 		<a	style="position: relative; font-family: 'Wemakeprice-Bold'; bottom: 107.5px; left: 37px; font-size: 17px;">ID</a>

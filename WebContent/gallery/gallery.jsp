@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +8,10 @@
 <meta name="viewport" content="width=device-width" , initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
 <title>ㅇㅇㅇ의 미니홈피</title>
-<link rel="stylesheet" href="./css/1_font_style.css" />
-<link rel="stylesheet" href="./css/2_layout_style.css" />
-<link rel="stylesheet" href="./css/3_design_style.css" />
-<link rel="stylesheet" href="./css/test.css" />
+<link rel="stylesheet" href="../css/1_font_style.css" />
+<link rel="stylesheet" href="../css/2_layout_style.css" />
+<link rel="stylesheet" href="../css/3_design_style.css" />
+<link rel="stylesheet" href="../css/test.css" />
 <script src="https://kit.fontawesome.com/66ae39e275.js"
 	crossorigin="anonymous"></script>
 
@@ -42,6 +43,7 @@
 </style>
 </head>
 <body>
+<c:set var="contextPath" value="<%=request.getContextPath()%>"/>
 	<header>
 		<%
 		// 메인 페이지로 이동했을 때 세션에 값이 담겨있는지 체크

@@ -4,6 +4,7 @@
 <%@ page import="diary.DiaryDAO"%>
 <%@ page import="diary.Diary"%>
 <%@ page import="java.util.ArrayList"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -22,6 +23,7 @@
 			style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
 			<br>Diary</h3>		
 <body>
+<c:set var="contextPath" value="<%=request.getContextPath()%>"/>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%
 		String userId = null;

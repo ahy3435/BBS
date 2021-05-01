@@ -5,6 +5,7 @@
 <%@ page import="diary.DiaryDAO"%>
 <%@ page import="diary.Diary"%>
 <%@ page import="java.util.ArrayList"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +22,7 @@
 			style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
 			<br>Diary</h3>	
 <body>
+<c:set var="contextPath" value="<%=request.getContextPath()%>"/>
  <%
         String userId = null;
         if (session.getAttribute("userId") != null) {//유저아이디이름으로 세션이 존재하는 회원들은 

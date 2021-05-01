@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="./css/design.css" />
-<link rel="stylesheet" href="./css/1_font_style.css" />
+<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/design.css" />
+<link rel="stylesheet" href="../css/1_font_style.css" />
 <title>ㅇㅇㅇ의 미니홈피</title>
 <style>
 body {
@@ -16,6 +17,7 @@ body {
 </style>
 </head>
 <body>
+<c:set var="contextPath" value="<%=request.getContextPath()%>"/>
 
 	<jsp:include page="../header.jsp"/>
 	
@@ -60,7 +62,7 @@ body {
 			</div>
 		</div>
 		<div class="col-lg-4"></div>
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<script src="https://code.jquery.com/../jquery-3.1.1.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
 </body>
 </html>

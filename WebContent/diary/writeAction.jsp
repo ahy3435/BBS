@@ -3,6 +3,7 @@
 
 <%@ page import="diary.DiaryDAO"%>
 <%@ page import="java.io.PrintWriter"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
 request.setCharacterEncoding("UTF-8");
@@ -18,6 +19,7 @@ request.setCharacterEncoding("UTF-8");
 <title>글쓰기</title>
 </head>
 <body>
+<c:set var="contextPath" value="<%=request.getContextPath()%>"/>
 
 	<%
 	String userId = null;

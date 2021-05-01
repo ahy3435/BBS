@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="mini.*"%>
 <%@ page import="java.io.*"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:set var="contextPath" value="<%=request.getContextPath()%>"/>
 	<%
 	request.setCharacterEncoding("utf-8");
 	%>
