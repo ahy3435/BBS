@@ -21,7 +21,7 @@ public class GalleryDAO {
 			 Class.forName("oracle.jdbc.OracleDriver"); 
 			 conn =DriverManager.getConnection(dbURL, dbID, dbPassword);
 
-			System.out.println("¿¬°á¿Ï·á");
+			System.out.println("ê°¤ëŸ¬ë¦¬ ì—°ê²°ì™„ë£Œ");
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ page import="diary.DiaryDAO"%>
+<%@ page import="gallery.GalleryDAO"%>
 <%@ page import="java.io.PrintWriter"%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
 request.setCharacterEncoding("UTF-8");
 %>
-<jsp:useBean id="diary" class="diary.Diary" scope="page" />
-<jsp:setProperty name="diary" property="diaryTitle" />
-<jsp:setProperty name="diary" property="diaryContent" />
+<jsp:useBean id="gallery" class="gallery.Gallery" scope="page" />
+<jsp:setProperty name="gallery" property="galleryTitle" />
+<jsp:setProperty name="gallery" property="galleryContent" />
 
 <!DOCTYPE html>
 <html>
@@ -25,7 +25,11 @@ request.setCharacterEncoding("UTF-8");
 	String userId = null;
 	if (session.getAttribute("userId") != null) {
 		userId = (String) session.getAttribute("userId");
+		
 	}
+	
+	String title=request.getParameter("GalleryTitle");
+	String content=request.getParameter("GalleryContent");
 	if (userId == null) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -33,15 +37,15 @@ request.setCharacterEncoding("UTF-8");
 		script.println("location.href='/BBS/member/login.jsp'");
 		script.println("</script>");
 	} else {
-		if (diary.getDiaryTitle() == null || diary.getDiaryContent() == null) {
+		if (title == null || content == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('입력이 안 된 사항이 있습니다.')");
 			script.println("history.back()");
 			script.println("</script>");
 		} else {
-			DiaryDAO diaryDAO = new DiaryDAO();
-			int result = diaryDAO.write(diary.getDiaryTitle(), userId, diary.getDiaryContent());
+			GalleryDAO galleryDAO = new GalleryDAO();
+			int result = galleryDAO.gallerywrite(userId, gallery.getGalleryTitle(), gallery.getGalleryContent(), gallery.getGalleryImagename());
 			if (result == -1) {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
@@ -51,7 +55,7 @@ request.setCharacterEncoding("UTF-8");
 			} else {
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("location.href='list.jsp'");
+		script.println("location.href='galleryList.jsp'");
 		script.println("</script>");
 
 			}

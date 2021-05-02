@@ -51,13 +51,13 @@
 	<header>
 		<%
 		// 메인 페이지로 이동했을 때 세션에 값이 담겨있는지 체크
-		String userID = null;
-		if (session.getAttribute("userID") != null) {
-			userID = (String) session.getAttribute("userID");
+		String userId = null;
+		if (session.getAttribute("userId") != null) {
+			userId = (String) session.getAttribute("userId");
 		}
 		
 		//로그인 안한경우
-		if (userID == null) {
+		if (userId == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('로그인 하세요.')");
@@ -71,7 +71,7 @@
 		}
 
 		GalleryDAO galleryDAO = new GalleryDAO();
-		ArrayList<Gallery> galleryList = galleryDAO.getList(userID, pageNumber);
+		ArrayList<Gallery> galleryList = galleryDAO.getList(userId, pageNumber);
 		
 		%>
 		<jsp:include page="../header.jsp" />
