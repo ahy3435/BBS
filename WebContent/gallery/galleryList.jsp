@@ -91,7 +91,7 @@
       %>
          <div class="cardList">
             <div class="card">
-               <img class="card-img-top myImg" src="../upload/<%=rs.getString(6) %>>"
+               <img class="card-img-top myImg" src="../upload/<%=gallery.getGalleryImagename()%>"
                   alt="Card image cap">
                <div class="card-body">
                   <h5 class="card-title"><%=gallery.getGalleryTitle()%></h5>
