@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.io.PrintWriter"%>
+<%@ page import="gallery.Gallery"%>
+<%@ page import="gallery.GalleryDAO"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,6 +55,24 @@
 		if (session.getAttribute("userID") != null) {
 			userID = (String) session.getAttribute("userID");
 		}
+		
+		//로그인 안한경우
+		if (userID == null) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('로그인 하세요.')");
+			script.println("location.href = '../member/login.jsp'");
+			script.println("</script>");
+		}
+		
+		int pageNumber = 1;
+		if (request.getParameter("pageNumber") != null) {
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		}
+
+		GalleryDAO galleryDAO = new GalleryDAO();
+		ArrayList<Gallery> galleryList = galleryDAO.getList(userID, pageNumber);
+		
 		%>
 		<jsp:include page="../header.jsp" />
 		<!-- 부트스트랩 참조 영역 -->
@@ -64,98 +86,26 @@
 			<br>Gallery
 		</h3>
 
-		<div class="cardList">
-			<div class="card">
-				<img class="card-img-top myImg" src="images/moon.jpg"
-					alt="Card image cap">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
+		<%
+			for(Gallery gallery: galleryList) {			
+		%>
+			<div class="cardList">
+				<div class="card">
+					<img class="card-img-top myImg" src="<%=request.getContextPath()%>/images/<%=gallery.getGalleryImagename()%>>"
+						alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title"><%=gallery.getGalleryTitle()%></h5>
+						<p class="card-text"><%=gallery.getGalleryContent()%></p>
+						<a href="#" class="btn btn-primary">Go somewhere</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="cardList">
-			<div class="card">
-				<img class="card-img-top myImg" src="images/moon.jpg"
-					alt="Card image cap">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
-				</div>
-			</div>
-		</div>
+		
+		<%
+		
+			}
+		%>
 
-
-		<div class="cardList">
-			<div class="card">
-				<img class="card-img-top myImg" src="images/moon.jpg"
-					alt="Card image cap">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="cardList">
-			<div class="card">
-				<img class="card-img-top myImg" src="images/moon.jpg"
-					alt="Card image cap">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="cardList">
-			<div class="card">
-				<img class="card-img-top myImg" src="images/moon.jpg"
-					alt="Card image cap">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="cardList">
-			<div class="card">
-				<img class="card-img-top myImg" src="images/moon.jpg"
-					alt="Card image cap">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="cardList">
-			<div class="card">
-				<img class="card-img-top myImg" src="images/moon.jpg"
-					alt="Card image cap">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
-				</div>
-			</div>
-		</div>
 
 
 
