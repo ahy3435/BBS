@@ -93,8 +93,8 @@
 									<div class="reverse_triangle_in_dd_button"></div>
 								</div>
 								<div class="contents_in_dd_box">
-									<a href="#" target="_blank">트위터 바로가기</a> <a href="#"
-										target="_blank">블로그 바로가기</a> <a href="#" target="_blank">인스타그램
+									<a href="https://twitter.com/" target="_blank">트위터 바로가기</a> <a href="https://section.blog.naver.com/"
+										target="_blank">블로그 바로가기</a> <a href="https://www.instagram.com/" target="_blank">인스타그램
 										바로가기</a>
 								</div>
 							</div>
@@ -143,8 +143,10 @@
 
 
 						<%
-						sql = "select diaryno, diarydate, diarytitle from (select diaryno, diarydate, diarytitle from diary order by diaryno desc ) where rownum <=4";
+						sql = "select diaryno, diarydate, diarytitle from (select userid, diaryno, diarydate, diarytitle from diary order by diaryno desc ) where rownum <=4 and userid =?";
+					
 						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, userId);
 						rs = pstmt.executeQuery();
 						ArrayList<Diary> diary = new ArrayList<Diary>();
 						while (rs.next()) {
