@@ -3,6 +3,7 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="mini.MiniUser"%>
 <%@ page import="diary.*"%>
+<%@ page import="gallery.*"%>
 <%@page import="java.util.*,java.io.*,  javax.sql.*, javax.naming.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -65,23 +66,11 @@
 						</div>
 					</div>
 					<div class="L_PROFILE_box box_white">
-						<%
-						if (rs.getString(6) != null) {
-						%>
-						<div class="image_box_in_PF">
-							<img src="upload/<%=rs.getString(6)%>" width="100%" />
-						</div>
-						<%
-						}
 
-						else {
-						%>
 						<div class="image_box_in_PF">
-							<p>사진을 넣어주세요</p>
+							<img src="upload/<%=rs.getString(6)%>" width="100%"
+								alt="사진을 넣어주세요" />
 						</div>
-						<%
-						}
-						%>
 						<div class="text_box_in_PF">
 
 							<div class="text_align_center">
@@ -126,85 +115,34 @@
 					<div class="C_MAIN_box box_white z_index_20">
 						<div class="updated_box_in_MAIN">
 							<div class="title_in_box">Gallery</div>
-							<div class="contents_in_updated">
-								<div class="board_in_contents">
-									<div style="width: 540px; margin: 5px;">
-										<!-- carousel를 사용하기 위해서는 class에 carousel와 slide 설정한다. -->
-										<!-- carousel는 특이하게 id를 설정해야 한다.-->
-										<div id="carousel-example-generic" class="carousel slide">
-											<!-- carousel의 지시자 -->
-											<!-- 지시자라고는 하는데 ol태그의 class에 carousel-indicators를 넣는다. -->
-											<ol class="carousel-indicators">
-												<!-- li는 이미지 개수만큼 추가하고 data-target은 carousel id를 가르킨다. -->
-												<!-- data-slide-to는 순서대로 0부터 올라가고 0은 active를 설정한다. -->
-												<!-- 딱히 이 부분은 옵션별로 설정하게 없다. -->
-												<li data-target="#carousel-example-generic"
-													data-slide-to="0" class="active"></li>
-												<li data-target="#carousel-example-generic"
-													data-slide-to="1"></li>
-											</ol>
-											<!-- 실제 이미지 아이템 -->
-											<!-- class는 carousel-inner로 설정하고 role은 listbox에서 설정한다. -->
-											<div class="carousel-inner" role="listbox"
-												style="width: 100%; height: 200px !important;">
-												<!-- 이미지의 개수만큼 item을 만든다. 중요한 포인트는 carousel-indicators의 li 태그 개수와 item의 개수는 일치해야 한다. -->
-												<div class="item active">
-													<!-- 아미지 설정- -->
-													<img src="images/cherryblossom.jpg" style="width: 100%">
-													<!-- 캡션 설정 (생략 가능) -->
-													<!-- 글자 색은 검은색 -->
-													<div class="carousel-caption" style="color: white;">
-													</div>
-												</div>
-												<div class="item">
-													<img src="images/moon.jpg" style="width: 100%"> 아쟈아쟈
-													<div class="carousel-caption" style="color: black;">
-													</div>
-												</div>
-											</div>
-											<!-- 왼쪽 화살표 버튼 -->
-											<!-- href는 carousel의 id를 가르킨다. -->
-											<a class="left carousel-control" opacity
-												href="#carousel-example-generic" role="button"
-												data-slide="prev"> <!-- 왼쪽 화살표 --> <span
-												class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-											</a>
-											<!-- 오른쪽 화살표 버튼 -->
-											<!-- href는 carousel의 id를 가르킨다. -->
-											<a class="right carousel-control"
-												href="#carousel-example-generic" role="button"
-												data-slide="next"> <!-- 오른쪽 화살표 --> <span
-												class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-											</a>
-										</div>
-									</div>
-									<script>
-										$(function() {
-											// 이미지 슬라이드 컨트롤를 사용하기 위해서는 carousel를 실행해야한다.
-											$('#carousel-example-generic')
-													.carousel({
-														// 슬리아딩 자동 순환 지연 시간
-														// false면 자동 순환하지 않는다.
-														interval : 3000,
-														// hover를 설정하면 마우스를 가져대면 자동 순환이 멈춘다.
-														pause : "hover",
-														// 순환 설정, true면 1 -> 2가면 다시 1로 돌아가서 반복
-														wrap : true,
-														// 키보드 이벤트 설정 여부(?)
-														keyboard : true
-													});
-										});
-									</script>
-								</div>
-							</div>
+							<%
+							rs.close();
+							pstmt.close();
+							pstmt = conn.prepareStatement(
+									"select galleryimagename from	(select * from gallery order by galleryid desc ) where rownum =1 and userid=?");
+							pstmt.setString(1, userId);
+							rs = pstmt.executeQuery();
+							ArrayList<Gallery> gall = new ArrayList<Gallery>();
+							while (rs.next()) {
+								gall.add(new Gallery(rs.getString(1)));
+							}
+							rs.close();
+							pstmt.close();
+							%>
+
+					<div style="width: 540px; margin: 5px;">
+					<c:set var="gall" value="<%=gall%>" />
+								<c:forEach var="gall" items="${gall}">
+					<img src="./upload/${gall.galleryImagename}" style="width: 540px; height:200px; margin: 5px;"/>
+					</c:forEach>
+					</div>
+
 						</div>
 
 
 
 
 						<%
-						rs.close();
-						pstmt.close();
 						sql = "select diaryno, diarydate, diarytitle from (select diaryno, diarydate, diarytitle from diary order by diaryno desc ) where rownum <=4";
 						pstmt = conn.prepareStatement(sql);
 						rs = pstmt.executeQuery();
@@ -216,6 +154,7 @@
 						<div class="miniroom_box_in_MAIN">
 							<div class="title_in_box">Diary</div>
 							<div class="contents_in_miniroom">
+							<br>
 								<c:set var="diary" value="<%=diary%>" />
 								<c:forEach var="diary" items="${diary}">
 									<li><a
@@ -230,7 +169,7 @@
 					<div class="R_menu_box">
 						<a href="/BBS/main.jsp" class="button_in_menu">홈</a> <a
 							href="diary/list.jsp" class="button_in_menu">다이어리</a> <a
-							href="gallery/gallery.jsp" class="button_in_menu">사진첩</a> <a
+							href="gallery/test.jsp" class="button_in_menu">사진첩</a> <a
 							href="member/proFile.jsp" class="button_in_menu">개인 정보</a>
 					</div>
 				</div>

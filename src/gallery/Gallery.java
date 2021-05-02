@@ -12,6 +12,14 @@ public class Gallery {
 	
 	public Gallery() {
 	}
+	public Gallery(String galleryTitle,String galleryContent,String galleryImagename) {
+	 this.galleryTitle=galleryTitle;
+	 this.galleryContent=galleryContent;
+	 this.galleryImagename=galleryImagename;}
+	
+	public Gallery(String galleryImagename) {
+		 this.galleryImagename=galleryImagename;}
+	
 	public int getGalleryId() {
 		return galleryId;
 	}

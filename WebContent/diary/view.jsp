@@ -19,9 +19,7 @@
 </head>
 
 
-	<h3 class="font1"
-			style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
-			<br>Diary</h3>		
+	
 <body>
 <c:set var="contextPath" value="<%=request.getContextPath()%>"/>
 
@@ -49,36 +47,9 @@
 		Diary diary = new DiaryDAO().getDiary(diaryNo);
 	%>
 
-			<%
-				//로긴 안 된경우
-				if (userId == null) {
-			%>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">접속하기<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="login.jsp">로그인</a></li>
-						<li><a href="join.jsp">회원가입</a></li>
-					</ul></li>
-			</ul>
-			<%
-				//로그인 된경우
-				} else {
-			%>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">회원관리<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="logoutAction.jsp">로그아웃</a></li>
-					</ul></li>
-			</ul>
-			<%
-				}
-			%>
-		</div>
-	</nav>
+<h3 class="font1"
+			style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+			<br>Diary</h3>		
 	<!-- 게시판 -->
 	<div class="container">
 		<div class="row">
@@ -105,7 +76,7 @@
 					</tr>
 					<tr>
 						<td style="width: 20%; background-color: #eeeeee;">내용</td>
-						<td colspan="2" style="min-height: 200px; text-align: left;"><%=diary.getDiaryContent()%></td>
+						<td colspan="2" style="min-height: 200px; text-align: center;"><%=diary.getDiaryContent()%></td>
 					</tr>
 
 				</tbody>

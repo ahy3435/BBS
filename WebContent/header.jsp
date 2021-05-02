@@ -54,7 +54,7 @@ rs.next();
 			<ul class="nav navbar-nav">
 				<li><a href="/BBS/main.jsp">메인</a></li>
 				<li><a href="${contextPath}/diary/list.jsp">일기장</a></li>
-				<li><a href="${contextPath}/gallery/gallery.jsp">사진첩</a></li>
+				<li><a href="${contextPath}/gallery/galleryList.jsp">사진첩</a></li>
 				<li><a href="${contextPath}/member/proFile.jsp">프로필</a></li>
 				<li><a href="${contextPath}/member/logoutAction.jsp">로그 아웃</a></li>
 			</ul>

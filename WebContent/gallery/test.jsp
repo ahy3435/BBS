@@ -4,6 +4,9 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="gallery.GalleryDAO"%>
 <%@ page import="gallery.Gallery"%>
+<%@ page import="java.sql.*"%>
+<%@page import="javax.sql.DataSource"%>
+<%@page import="javax.naming.InitialContext"%>
 <%@ page import="java.util.ArrayList"%>
    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -46,72 +49,59 @@
 </style>
 </head>
 <body>
-<% request.setCharacterEncoding("UTF-8"); %>
 <c:set var="contextPath" value="<%=request.getContextPath()%>"/>
-   <header>
-      <%
-      // 메인 페이지로 이동했을 때 세션에 값이 담겨있는지 체크
-      String userId = null;
-      if (session.getAttribute("userId") != null) {
-         userId = (String) session.getAttribute("userId");
-      }
-      
-      //로그인 안한경우
-      if (userId == null) {
-         PrintWriter script = response.getWriter();
-         script.println("<script>");
-         script.println("alert('로그인 하세요.')");
-         script.println("location.href = '../member/login.jsp'");
-         script.println("</script>");
-      }
-      
-      int pageNumber = 1;
-      if (request.getParameter("pageNumber") != null) {
-         pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-      }
+<% request.setCharacterEncoding("UTF-8"); %>
 
-      GalleryDAO galleryDAO = new GalleryDAO();
-      ArrayList<Gallery> galleryList = galleryDAO.getList(userId, pageNumber);
-      
-      %>
+
+   
       <jsp:include page="../header.jsp" />
+      <%String userId = (String)session.getAttribute("userId"); %>
       <!-- 부트스트랩 참조 영역 -->
-      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-      <script src="js/bootstrap.js"></script>
-   </header>
+  
+
 
    <div class="galleryDiv">
       <h3 class="font1"
          style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
          <br>Gallery
       </h3>
-
+      
       <%
-         for(Gallery gallery: galleryList) {         
-      %>
+      InitialContext ic = new InitialContext();
+      DataSource ds = (DataSource)ic.lookup("java:comp/env/jdbc/myoracle");
+      Connection conn = ds.getConnection();
+
+	PreparedStatement pstmt = conn.prepareStatement("select gallerytitle, gallerycontent,galleryImagename from gallery where userid=?");
+	pstmt.setString(1, userId);
+	ResultSet rs = pstmt.executeQuery();	
+	ArrayList<Gallery> gall = new ArrayList<Gallery>();
+	while (rs.next()) {
+		gall.add(new Gallery(rs.getString(1), rs.getString(2), rs.getString(3)));
+	}
+	rs.close();
+	pstmt.close();
+	conn.close();
+
+	%>
+	<c:set var="gall" value="<%=gall%>" />
+								<c:forEach var="gall" items="${gall}">
          <div class="cardList">
-            <div class="card">
-               <img class="card-img-top myImg" src="../upload/<%=rs.getString(6) %>>"
-                  alt="Card image cap">
+            <div class="card" >
+       
+               <img class="card-img-top myImg" src="../upload/${gall.galleryImagename}"
+                  alt="Card image cap"/>
                <div class="card-body">
-                  <h5 class="card-title"><%=gallery.getGalleryTitle()%></h5>
-                  <p class="card-text"><%=gallery.getGalleryContent()%></p>
+                  <h5 class="card-title">${gall.galleryTitle }</h5>
+                  <p class="card-text">${gall.galleryContent }</p>
                   <a href="#" class="btn btn-primary">Go somewhere</a>
                </div>
             </div>
          </div>
-      
-      <%
-      
-         }
-      %>
-
-
-
-
-
+      </c:forEach>
+      <button onclick="location.href='galleryWrite.jsp'">사진 올리기</button>
    </div>
-
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+      <script src="js/bootstrap.js"></script>
 
 </body>
 </html>
