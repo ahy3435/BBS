@@ -8,8 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class DiaryDAO {// µ¥ÀÌÅÍ º£ÀÌ½º Á¢±Ù °´Ã¼ÀÇ ¾àÀÚ
-	private Connection conn;// connection db¿¡ Á¢±ÙÇÏ°Ô ÇØÁÖ´Â °´Ã¼
+public class DiaryDAO {// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private Connection conn;// connection dbï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½Ã¼
 	private ResultSet rs;
 	public DiaryDAO() {
 		try {
@@ -23,7 +23,7 @@ public class DiaryDAO {// µ¥ÀÌÅÍ º£ÀÌ½º Á¢±Ù °´Ã¼ÀÇ ¾àÀÚ
 			e.printStackTrace();
 		}
 	}
-//ÇöÀçÀÇ ½Ã°£À» °¡Á®¿À´Â ÇÔ¼ö
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
 	public String getDate() {
 		
 		String SQL = "SELECT SYSDATE FROM DIARY";
@@ -38,9 +38,9 @@ public class DiaryDAO {// µ¥ÀÌÅÍ º£ÀÌ½º Á¢±Ù °´Ã¼ÀÇ ¾àÀÚ
 			e.printStackTrace();
 		}
 		
-		return "";// µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+		return "";// ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
-//DiaryID °Ô½Ã±Û ¹øÈ£ °¡Á®¿À´Â ÇÔ¼ö
+//DiaryID ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
 	public int getNext() {
 
 		String SQL = "SELECT DIARYNO FROM DIARY ORDER BY DIARYNO DESC";
@@ -51,11 +51,11 @@ public class DiaryDAO {// µ¥ÀÌÅÍ º£ÀÌ½º Á¢±Ù °´Ã¼ÀÇ ¾àÀÚ
 			if (rs.next()) {
 				return rs.getInt(1) + 1;
 			}
-			return 1; // Ã¹¹øÂ° °Ô½Ã¹°ÀÎ°æ¿ì
+			return 1; // Ã¹ï¿½ï¿½Â° ï¿½Ô½Ã¹ï¿½ï¿½Î°ï¿½ï¿½
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1;// µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+		return -1;// ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 	public int write(String diaryTitle, String userId, String diaryContent) {
 		String SQL = "INSERT INTO DIARY VALUES(?,?,?,to_char(sysdate,'yyyy-mm-dd hh24:mi'),?,?)";
@@ -72,14 +72,14 @@ public class DiaryDAO {// µ¥ÀÌÅÍ º£ÀÌ½º Á¢±Ù °´Ã¼ÀÇ ¾àÀÚ
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1; // µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+		return -1; // ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 
 	public ArrayList<Diary> getList(int pageNumber) {
 		
 		String SQL = "SELECT * FROM (SELECT * FROM DIARY WHERE diaryNo <? and diaryAvailable=1 ORDER BY diaryNo DESC) WHERE ROWNUM<=10";
 		
-		//Diary¿¡¼­ ³ª¿À´Â °É º¸°üÇÒ¼ö ÀÖ´Â ÀÎ½ºÅÏ½º¸¦ »ý¼º
+		//Diaryï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ ï¿½Ö´ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		ArrayList<Diary> list = new ArrayList<Diary>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -146,7 +146,7 @@ public class DiaryDAO {// µ¥ÀÌÅÍ º£ÀÌ½º Á¢±Ù °´Ã¼ÀÇ ¾àÀÚ
 	
 	
 	
-	// ¼öÁ¤ ÇÔ¼ö
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
 		public int update(int diaryNo, String diaryTitle, String diaryContent) {
 			String SQL = "UPDATE diary SET diaryTitle = ?, diaryContent = ? WHERE diaryNo = ?";
 			try {
@@ -159,11 +159,11 @@ public class DiaryDAO {// µ¥ÀÌÅÍ º£ÀÌ½º Á¢±Ù °´Ã¼ÀÇ ¾àÀÚ
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return -1; // µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+			return -1; // ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}
 		
 		
-		// »èÁ¦ ÇÔ¼ö
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
 		public int delete(int diaryNo) {
 			String SQL = "UPDATE DIARY SET diaryAvailable = 0 WHERE DiaryNo = ?";
 			try {
@@ -174,6 +174,6 @@ public class DiaryDAO {// µ¥ÀÌÅÍ º£ÀÌ½º Á¢±Ù °´Ã¼ÀÇ ¾àÀÚ
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return -1; // µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+			return -1; // ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}
 	}

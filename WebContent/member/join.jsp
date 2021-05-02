@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../css/design.css" />
 <link rel="stylesheet" href="../css/1_font_style.css" />
-<title>ㅇㅇㅇ의 미니홈피</title>
+<title>미니홈피</title>
 <style>
 body {
 	margin: 0;

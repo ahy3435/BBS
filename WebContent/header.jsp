@@ -52,7 +52,7 @@ rs.next();
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="main.jsp">메인</a></li>
+				<li><a href="/BBS/main.jsp">메인</a></li>
 				<li><a href="${contextPath}/diary/list.jsp">일기장</a></li>
 				<li><a href="${contextPath}/gallery/gallery.jsp">사진첩</a></li>
 				<li><a href="${contextPath}/member/proFile.jsp">프로필</a></li>

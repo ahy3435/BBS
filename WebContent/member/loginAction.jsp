@@ -35,7 +35,7 @@ while(rs.next()){
 		session.setAttribute("userId",userId);	
 		session.setAttribute("userPwd",userPwd);
 		%><script>
-		document.location.href="../main.jsp";
+		document.location.href="/BBS/main.jsp";
 	</script>
 	<%
 

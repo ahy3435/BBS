@@ -100,6 +100,27 @@
 		</div>
 	</div>
 
+<script>
+// $("form button[type='submit']").click(function () {
+// 	//폼 액션넘기지말고 넘기라고하는코드 한줄 쓰고
+	
+// 	if ($("form input[name='diaryTitle']").val() == '') {
+// 		alert('제목이 없습니다.');
+// 		$("form input[name='diaryTitle']").focus();
+// 		return false;
+// 	}
+	
+// 	if ($("form input[name='diaryContent']").val() == '') {
+// 		alert('내용이 없습니다.')
+// 		$("form input[name='diaryContent']").focus();
+// 		return false;
+// 	}
+	
+// 	//만족되면
+// 	//$('form').submit();
+	
+// })
+</script>
 
 
 <!-- 부트스트랩 참조 영역 -->

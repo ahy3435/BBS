@@ -57,15 +57,20 @@ rs.next();
 				<div class="Left_container">
 					<div class="L_VISIT_box">
 						<div class="text_box_in_VISIT visit-URL_font_style">
-							<span>TODAY <span class="color_red">28</span> | TOTAL
-								234918
+							<span>proFIie
 							</span>
 						</div>
 					</div>
 					<div class="L_PROFILE_box box_white">
+					<%if(rs.getString(6)!=null){ %>
 						<div class="image_box_in_PF">
-							<img src="images/dog.jpg" width="100%" />
-						</div>
+							<img src="upload/<%=rs.getString(6) %>" width="100%" />
+						</div><%} 
+						
+						else {%>
+						<div class="image_box_in_PF">
+							<p>사진을 넣어주세요 </p>
+						</div><%} %>
 						<div class="text_box_in_PF">
 
 							<div class="text_align_center" >
@@ -180,7 +185,7 @@ rs.next();
 						<div class="miniroom_box_in_MAIN">
 							<div class="title_in_box">Diary</div>
 							<div class="contents_in_miniroom">
-							<li><a href="list.jsp">2021-04-11</a></li>
+							<li><a href="/BBS/diary/view.jsp?diaryNo=">2021-04-11</a></li>
 							<li>2021-04-13</li>
 							<li>2021-04-15</li>
 							<li>2021-04-17</li>
@@ -191,7 +196,7 @@ rs.next();
 				<div class="Right_container z_index_10">
 					<div class="R_blank_space_box"></div>
 					<div class="R_menu_box">
-						<a href="/main.jsp" class="button_in_menu">홈</a> <a
+						<a href="/BBS/main.jsp" class="button_in_menu">홈</a> <a
 							href="diary/list.jsp" class="button_in_menu">다이어리</a> <a
 							href="gallery/gallery.jsp" class="button_in_menu">사진첩</a>
 							<a href="member/proFile.jsp" class="button_in_menu">개인 정보</a>
@@ -203,3 +208,5 @@ rs.next();
 	<%rs.close(); pstmt.close();  conn.close(); %>
 </body>
 </html>
+
+
