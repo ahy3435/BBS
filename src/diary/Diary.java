@@ -8,6 +8,12 @@ public class Diary {
 		private String diaryContent;
 		private int diaryAvailable;
 		
+		public Diary() {}
+		
+		public Diary(int diaryNo,String diaryDate,String diaryTitle) {
+			this.diaryNo=diaryNo; this.diaryDate = diaryDate; this.diaryTitle = diaryTitle;
+		}
+		
 		public String getDiaryTitle() {
 			return diaryTitle;
 		}

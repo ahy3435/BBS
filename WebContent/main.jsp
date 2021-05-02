@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-    <%@ page import="java.sql.*"%>
+<%@ page import="java.sql.*"%>
 <%@ page import="mini.MiniUser"%>
+<%@ page import="diary.*"%>
 <%@page import="java.util.*,java.io.*,  javax.sql.*, javax.naming.*"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,26 +28,28 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<%request.setCharacterEncoding("utf-8"); %>
-	
+	<%
+	request.setCharacterEncoding("utf-8");
+	%>
+
 	<jsp:useBean id="user" class="mini.MiniUser" />
 	<jsp:setProperty property="*" name="user" />
-	
-		<%
-		String userId = (String)session.getAttribute("userId");
-		
-String sql = null;
-InitialContext ic = new InitialContext();
-DataSource ds = (DataSource)ic.lookup("java:comp/env/jdbc/myoracle");
-Connection conn = ds.getConnection();
-sql = "select * from miniuser where userId=?";
-PreparedStatement pstmt = conn.prepareStatement(sql);
-pstmt.setString(1,userId);
-ResultSet rs = pstmt.executeQuery();
-rs.next();
-%>
-<header>
-	<jsp:include page="header.jsp"/>
+
+	<%
+	String userId = (String) session.getAttribute("userId");
+
+	String sql = null;
+	InitialContext ic = new InitialContext();
+	DataSource ds = (DataSource) ic.lookup("java:comp/env/jdbc/myoracle");
+	Connection conn = ds.getConnection();
+	sql = "select * from miniuser where userId=?";
+	PreparedStatement pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, userId);
+	ResultSet rs = pstmt.executeQuery();
+	rs.next();
+	%>
+	<header>
+		<jsp:include page="header.jsp" />
 		<!-- 부트스트랩 참조 영역 -->
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script src="js/bootstrap.js"></script>
@@ -57,30 +61,43 @@ rs.next();
 				<div class="Left_container">
 					<div class="L_VISIT_box">
 						<div class="text_box_in_VISIT visit-URL_font_style">
-							<span>proFIie
-							</span>
+							<span>proFIie </span>
 						</div>
 					</div>
 					<div class="L_PROFILE_box box_white">
-					<%if(rs.getString(6)!=null){ %>
+						<%
+						if (rs.getString(6) != null) {
+						%>
 						<div class="image_box_in_PF">
-							<img src="upload/<%=rs.getString(6) %>" width="100%" />
-						</div><%} 
-						
-						else {%>
+							<img src="upload/<%=rs.getString(6)%>" width="100%" />
+						</div>
+						<%
+						}
+
+						else {
+						%>
 						<div class="image_box_in_PF">
-							<p>사진을 넣어주세요 </p>
-						</div><%} %>
+							<p>사진을 넣어주세요</p>
+						</div>
+						<%
+						}
+						%>
 						<div class="text_box_in_PF">
 
-							<div class="text_align_center" >
-								<span><%if(rs.getString(7)==null){%>자기 소개를 입력해 주세요<%}
-								else {%><%=rs.getString(7)%><% } %></span>
+							<div class="text_align_center">
+								<span> <%
+ if (rs.getString(7) == null) {
+ %>자기 소개를 입력해 주세요<%
+ } else {
+ %><%=rs.getString(7)%> <%
+ }
+ %>
+								</span>
 							</div>
 
 						</div>
 						<div class="my_imfo_in_PF">
-							<div class="text_in_my_imfo"><%=rs.getString(3) %></div>
+							<div class="text_in_my_imfo"><%=rs.getString(3)%></div>
 							<div class="dropdown_box_in_my_imfo">
 								<div class="dropdown_button_in_dd_box">
 									<div class="text_in_dd_button">이동</div>
@@ -88,8 +105,8 @@ rs.next();
 								</div>
 								<div class="contents_in_dd_box">
 									<a href="#" target="_blank">트위터 바로가기</a> <a href="#"
-										target="_blank">블로그 바로가기</a>
-										<a href="#" target="_blank">인스타그램 바로가기</a>
+										target="_blank">블로그 바로가기</a> <a href="#" target="_blank">인스타그램
+										바로가기</a>
 								</div>
 							</div>
 						</div>
@@ -182,13 +199,28 @@ rs.next();
 							</div>
 						</div>
 
+
+
+
+						<%
+						rs.close();
+						pstmt.close();
+						sql = "select diaryno, diarydate, diarytitle from (select diaryno, diarydate, diarytitle from diary order by diaryno desc ) where rownum <=4";
+						pstmt = conn.prepareStatement(sql);
+						rs = pstmt.executeQuery();
+						ArrayList<Diary> diary = new ArrayList<Diary>();
+						while (rs.next()) {
+							diary.add(new Diary(rs.getInt(1), rs.getString(2), rs.getString(3)));
+						}
+						%>
 						<div class="miniroom_box_in_MAIN">
 							<div class="title_in_box">Diary</div>
 							<div class="contents_in_miniroom">
-							<li><a href="/BBS/diary/view.jsp?diaryNo=">2021-04-11</a></li>
-							<li>2021-04-13</li>
-							<li>2021-04-15</li>
-							<li>2021-04-17</li>
+								<c:set var="diary" value="<%=diary%>" />
+								<c:forEach var="diary" items="${diary}">
+									<li><a
+										href="/BBS/diary/view.jsp?diaryNo=${diary.diaryNo }">${diary.diaryDate }제목:${diary.diaryTitle}</a></li>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -198,14 +230,18 @@ rs.next();
 					<div class="R_menu_box">
 						<a href="/BBS/main.jsp" class="button_in_menu">홈</a> <a
 							href="diary/list.jsp" class="button_in_menu">다이어리</a> <a
-							href="gallery/gallery.jsp" class="button_in_menu">사진첩</a>
-							<a href="member/proFile.jsp" class="button_in_menu">개인 정보</a>
+							href="gallery/gallery.jsp" class="button_in_menu">사진첩</a> <a
+							href="member/proFile.jsp" class="button_in_menu">개인 정보</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<%rs.close(); pstmt.close();  conn.close(); %>
+	<%
+	rs.close();
+	pstmt.close();
+	conn.close();
+	%>
 </body>
 </html>
 
