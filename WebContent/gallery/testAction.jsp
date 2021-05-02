@@ -40,13 +40,12 @@ String userId = (String)session.getAttribute("userId");
 		DataSource ds = (DataSource) ic.lookup("java:comp/env/jdbc/myoracle");
 		Connection conn = ds.getConnection();
 
-		PreparedStatement pstmt = conn.prepareStatement("insert into gallery values(?,?,to_date(sysdate,'yyyy-mm-dd hh24:mi'),?,?,?,?)");
-		pstmt.setInt(1, 5);
-		pstmt.setString(2, userId);
-		pstmt.setString(3, GalleryTitle);
-		pstmt.setString(4, GalleryContent);
-		pstmt.setString(5, orgFile);
-		pstmt.setInt(6, 1);
+		PreparedStatement pstmt = conn.prepareStatement("insert into gallery values(gallery_seq.nextval,?,to_date(sysdate,'yyyy-mm-dd hh24:mi'),?,?,?,?)");		
+		pstmt.setString(1, userId);
+		pstmt.setString(2, GalleryTitle);
+		pstmt.setString(3, GalleryContent);
+		pstmt.setString(4, orgFile);
+		pstmt.setInt(5, 1);
 		pstmt.execute();
 		
 		pstmt.close();
