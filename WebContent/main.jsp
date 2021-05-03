@@ -12,7 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width" , initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
-<title>ㅇㅇㅇ의 미니홈피</title>
+<title>MiniWorld</title>
 <link rel="stylesheet" href="./css/1_font_style.css" />
 <link rel="stylesheet" href="./css/2_layout_style.css" />
 <link rel="stylesheet" href="./css/3_design_style.css" />
@@ -171,7 +171,7 @@
 					<div class="R_menu_box">
 						<a href="/BBS/main.jsp" class="button_in_menu">홈</a> <a
 							href="diary/list.jsp" class="button_in_menu">다이어리</a> <a
-							href="gallery/test.jsp" class="button_in_menu">사진첩</a> <a
+							href="gallery/galleryList.jsp" class="button_in_menu">사진첩</a> <a
 							href="member/proFile.jsp" class="button_in_menu">개인 정보</a>
 					</div>
 				</div>

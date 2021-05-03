@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Hello~jsp게시판 웹사이트 만들기</title>
+<title>MiniWorld</title>
 </head>
 <body>
 <script>
