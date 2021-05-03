@@ -1,43 +1,62 @@
+<%@page import="java.util.*,gallery.*"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="javax.sql.DataSource"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="com.oreilly.servlet.*, com.oreilly.servlet.multipart.*, java.io.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*, javax.sql.*, javax.naming.*, java.util.*, java.io.*, gallery.Gallery"%>
-<%@ page import="gallery.GalleryDAO"%>
-<%@ page import="java.io.PrintWriter"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<%
-request.setCharacterEncoding("UTF-8");
-%>
-<jsp:useBean id="gallery" class="gallery.Gallery" scope="page" />
-<jsp:setProperty name="gallery" property="galleryTitle" />
-<jsp:setProperty name="gallery" property="galleryContent" />
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>글쓰기</title>
+<title>Insert title here</title>
 </head>
-<<jsp:useBean id="product" class="gallery.Gallery" scope="request" />
-	<%
-	String galleryId = request.getParameter("galleryId");
-	String userId = request.getParameter("userId");
-	String galleryDate = request.getParameter("galleryDate");
-	String galleryContent = request.getParameter("galleryContent");
-	String galleryImagename = request.getParameter("galleryImagename");
-	
-	InitialContext ic = new InitialContext();
+<body>
+<c:set var="contextPath" value="<%=request.getContextPath()%>"/>
+	<%request.setCharacterEncoding("utf-8"); %>
+<%
 
-	DataSource ds = (DataSource) ic.lookup("java:comp/env/jdbc/myoracle");
-	Connection conn = ds.getConnection();
-	PreparedStatement pstmt = conn.prepareStatement("insert into gallery values(?,?,?,?,?,?)");
-	pstmt.setString(1, galleryId);
-	pstmt.setString(2, userId);
-	pstmt.setString(3, galleryDate);
-	pstmt.setString(4, galleryContent);
-	pstmt.setString(5, galleryImagename);
-	ResultSet rs = pstmt.executeQuery();
-	response.sendRedirect("galleryList.jsp");
+String userId = (String)session.getAttribute("userId");
+
+	MultipartRequest multi = null;
+	String path = application.getRealPath("/upload");//시스템 물리적인 경로
+	System.out.println(path);
+	int size = 1024*1024*10;
+	System.out.println("asd");
+		multi = new MultipartRequest(
+		request, path, size, "UTF-8", new DefaultFileRenamePolicy());
+		String GalleryTitle = multi.getParameter("GalleryTitle");
+		String GalleryContent = multi.getParameter("GalleryContent");
+		Enumeration files = multi.getFileNames();
+		String name = (String)files.nextElement();
+		String file = multi.getFilesystemName(name);
+		String orgFile = multi.getOriginalFileName(name);
+		
+		InitialContext ic = new InitialContext();
+		DataSource ds = (DataSource) ic.lookup("java:comp/env/jdbc/myoracle");
+		Connection conn = ds.getConnection();
+
+		PreparedStatement pstmt = conn.prepareStatement("insert into gallery values(gallery_seq.nextval,?,to_date(sysdate,'yyyy-mm-dd hh24:mi'),?,?,?,?)");		
+		pstmt.setString(1, userId);
+		pstmt.setString(2, GalleryTitle);
+		pstmt.setString(3, GalleryContent);
+		pstmt.setString(4, orgFile);
+		pstmt.setInt(5, 1);
+		pstmt.execute();
+		
+		pstmt.close();
+		conn.close();
+		response.sendRedirect("galleryList.jsp");
+	
+	
+	
+	
+	
+	
 	%>
 </body>
 </html>

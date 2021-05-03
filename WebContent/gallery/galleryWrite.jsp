@@ -31,7 +31,7 @@ request.setCharacterEncoding("UTF-8");
 
 	<div class="container">
 		<div class="row">
-			<form method="post" action="testAction.jsp" enctype="multipart/form-data">
+			<form method="post" action="galleryWriteAction.jsp" enctype="multipart/form-data">
 
 				<!-- table-striped : 게시글 목록 홀수/짝수 번갈아 색상변경하여 보기 쉽게 해주는 요소 -->
 				<table class="table table-striped"
