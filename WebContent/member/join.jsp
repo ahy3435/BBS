@@ -56,7 +56,7 @@ body {
 
 
 					
-					<input type="submit" class="btn-primary1 form-control" value="로그인">
+					<input type="button" class="btn-primary1 form-control" value="로그인" onclick="location.href='login.jsp'">
 					<input style="text-align:center" type="submit" class="btn-primary form-control" value="가입완료">
 				</form>
 			</div>

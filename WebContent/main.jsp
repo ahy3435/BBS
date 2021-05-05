@@ -108,7 +108,7 @@
 						</div>
 						<div class="URL_box_in_TOP visit-URL_font_style">
 							<a
-								href="https://julia8024.github.io/2021-Sehee-mini-hompage/home.html"><i
+								href="main.jsp"><i
 								class="fas fa-home"></i></a>
 						</div>
 					</div>
