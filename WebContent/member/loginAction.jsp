@@ -33,6 +33,7 @@
 
 	if(rs.next()){
 		if(userPwd.equals(rs.getString(1))){
+			session.setAttribute("userId",userId);
 			%><script>
 			document.location.href = "/BBS/main.jsp";
 		</script>
