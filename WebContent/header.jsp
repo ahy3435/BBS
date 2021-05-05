@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="java.sql.*, javax.sql.*, javax.naming.*,java.util.*"%>
+<%@page import="java.sql.*,
+ javax.sql.*,
+  javax.naming.*,
+  java.util.*"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="mini.MiniUser"%>
-<%@ page import="com.oreilly.servlet.*"%>
+<%@ page import="mini.*"%>
+
 
 <meta name="viewport" content="width=device-width" , initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css"/>
@@ -72,7 +75,7 @@ rs.next();
 				<li><a href="join.jsp">회원가입</a></li>
 			</ul>
 		</div>
-		<%} %>
+		<%} rs.close(); pstmt.close(); conn.close();%>
 		<%-- 	<%} else out.print("<script>alert('비밀번호 불일치');	history.back();	</script>");  %> --%>
 	</nav>
 </body>

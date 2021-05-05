@@ -25,8 +25,8 @@
 <c:set var="contextPath" value="<%=request.getContextPath()%>"/>
  <%
         String userId = null;
-        if (session.getAttribute("userId") != null) {//유저아이디이름으로 세션이 존재하는 회원들은 
-            userId = (String) session.getAttribute("userId");//유저아이디에 해당 세션값을 넣어준다.
+        if (session.getAttribute("userId") != null) {
+            userId = (String) session.getAttribute("userId");
         }
         if (userId == null) {
             PrintWriter script = response.getWriter();

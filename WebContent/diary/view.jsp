@@ -28,7 +28,6 @@
 
 
 	<%
-		//로긴한 사람이라면 userId라는 변수에 해당 아이디가 담기고 그렇지 않으면 null값
 		String userId = null;
 		if (session.getAttribute("userId") != null) {
 			userId = (String) session.getAttribute("userId");
@@ -50,7 +49,6 @@
 <h3 class="font1"
 			style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
 			<br>Diary</h3>		
-	<!-- 게시판 -->
 	<div class="container">
 		<div class="row">
 			<table class="table table-strped"
@@ -83,7 +81,6 @@
 			</table>
 			<a href="list.jsp" class="btn btn-primary">목록</a>
 			<%
-				//글작성자 본인일시 수정 삭제 가능
 				if (userId != null && userId.equals(diary.getUserId())) {
 			%>
 			<a href="diaryUpdate.jsp?diaryNo=<%=diaryNo%>" class="btn btn-primary">수정</a>
@@ -93,7 +90,6 @@
 			%>
 		</div>
 	</div>
-	<!-- 부트스트랩 참조 영역 -->
 	<script src="https://code.jquery.com/../jquery-3.1.1.min.js"></script>
 	<script src="../js/bootstrap.js"></script>
 </body>

@@ -26,23 +26,22 @@
 
 <% request.setCharacterEncoding("UTF-8"); %>
 	<%
-		// 메인 페이지로 이동했을 때 세션에 값이 담겨있는지 체크
+	
 		String userId = null;
 	if (session.getAttribute("userId") != null) {
 		userId = (String) session.getAttribute("userId");
 	}
-	int pageNumber = 1; //기본 페이지 넘버
+	int pageNumber = 1;
 
-	//페이지 넘버값이 있을때
+
 	if (request.getParameter("pageNumber") != null) {
 		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 	}
 %>
 
-	<!-- 게시판 메인 페이지 영역 시작 -->
+
 	<div class="container">
 		<div class="row">
-			<!-- table-striped : 게시글 목록 홀수/짝수 번갈아 색상변경하여 보기 쉽게 해주는 요소 -->
 			<table class="table table-striped"
 				style="text-align: center; border: 1px solid #dddddd">
 				<thead>
@@ -72,7 +71,6 @@
 					%>
 				</tbody>
 			</table>
-			<!-- 페이지 넘기기 -->
 			<%
 				if (pageNumber != 1) {
 			%>
@@ -87,9 +85,7 @@
 			<%
 				}
 			%>
-			<!-- 회원만 넘어가도록 -->
 			<%
-				//if logined userID라는 변수에 해당 아이다가 담기고 if not null
 				if (session.getAttribute("userId") != null) {
 			%>
 			<a href="write.jsp" class="btn btn-primary pull-right">작성</a>
@@ -104,7 +100,6 @@
 
 		</div>
 	</div>
-	<!-- 게시판 메인 페이지 영역 끝 -->
 
 
 
